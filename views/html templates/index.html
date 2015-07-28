@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/styles.css" rel="stylesheet"></link>
+  <link href="css/normalize.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js?ver=4.2.2"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+  <script src="javascripts/imagesloaded.pkgd.min.js"></script>
+  <script src="javascripts/isotope.pkgd.min.js"></script>
+</head>
+<body>
+
+  <!--Navbar Mobile-->
+  <div class="container nav-con-home">
+    <nav id="myNavmenu" class="navmenu navmenu-default navmenu-fixed-right offcanvas" role="navigation">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="over.html">OVER ONS</a></li>
+        <li><a href="wat-we-doen.html">WAT WE DOEN</a></li>
+        <li><a href="cases.html">CASES</a></li>
+        <li><a href="blog.html">BLOG</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+      </ul>
+    </nav>
+    <div class="navbar navbar-default mobile-nav visible-xs">
+      <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target="#myNavmenu" data-canvas="body">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"><img src="img/logo-color.svg" /></a>
+      <a class="mobile-icon">a</a>
+      <a class="mobile-icon">a</a>
+    </div>
+
+    <!--Navbar Desktop-->
+    <nav class="navbar navbar-default header-home hidden-xs">
+      <div class="container-fluid menu">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html"><img src="img/logo-home.svg" /></a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!--menu items-->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav home-nav">
+            <li class="active"><a href="index.html">HOME</a></li>
+            <li><a href="over.html">OVER ONS</a></li>
+            <li><a href="wat-we-doen.html">WAT WE DOEN</a></li>
+            <li><a href="cases.html">CASES</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="phone"><i class="phone-icon"></i><span class="tel-num text-white">035-6668456</span></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+        <!--slider-->
+        <div id="carousel" class="carousel slide carousel-fade slide-home" data-ride="carousel">
+          <div class="mask"/></div>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <div class="active item">
+              <img src="img/Ludens21.jpg" alt="...">
+            </div>
+            <div class="item">
+              <img src="img/Ludens 2.jpg" alt="...">
+            </div>
+            <div class="item">
+              <img src="img/Ludens21.jpg" alt="...">
+            </div>
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#carousel" data-slide="prev"></a>
+          <a class="carousel-control right" href="#carousel" data-slide="next"></a>
+          <!--<img src="img/mask.png" class="blue-circle"/>-->
+        </div>
+        <hr class="transition-timer-carousel-progress-bar" />
+
+
+        <!--pagehead title and description-->
+        <div class="container intro-con">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="intro">
+                <p class="intro-text text-white">Wij helpen organisaties om het beste uit hun talentvolle medewerkers te halen.</p>
+                <a class="button" href="over.html">meer over ons</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!--Programma's-->
+        <div class="container programma-con">
+          <!--<div class="row programma-title">
+            <div class="col-lg-12"><span class="title no-margin">Wat we doen</span></div>
+          </div>-->
+          <div class="row programma-box">
+            <div class="col-md-4 col-xs-12">
+              <div class="programma-textbox">
+                <img src="img/programma-img.jpg" class="programma-img"/>
+                <div class="programma-content">
+                  <h2>Management Development </h2>
+                  <span class="description">Het ontwikkelen van de leiders van toekomst </span>
+                </div>
+                <a><div class="title-block">lees meer</div></a>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <div class="programma-textbox">
+                <img src="img/programma-img.jpg" class="programma-img"/>
+                <div class="programma-content">
+                  <h2>Talentprogramma’s</h2>
+                  <span class="description">Het laten bloeien van talent</span>
+                </div>
+                <a><div class="title-block">lees meer</div></a>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-12">
+              <div class="programma-textbox">
+                <img src="img/programma-img.jpg" class="programma-img"/>
+                <div class="programma-content">
+                  <h2>Veranderprogramma’s</h2>
+                  <span class="description">Recht doen aan wat er speelt</span>
+                </div>
+                <a><div class="title-block">lees meer</div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container title-block bekijk">
+        <div class="row">
+          <div class="col-lg-12"><span class="more">Bekijk alle cases</span></div>
+        </div>
+      </div>
+
+      <!--cases-->
+      <div class="container cases-con">
+        <div class="row cases-home">
+          <div class="col-lg-12"><span class="title">Cases</span></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 case-box">
+            <div class="case-img">
+              <img src="img/case-home.jpg"/>
+              <h1>MAMMOET</h1>
+            </div>
+            <div class="case">
+              <span class="description">Management Development</span>
+              <p>Toen ik hier twee jaar geleden binnenkwam, was er dan ook vooral aandacht voor de technische kennis van medewerkers. Leiderschap en persoonlijke ontwikkeling hadden minder prioriteit.</p>
+            </div>
+            <a href=""><div class="title-block white"><span class="more-col">Bekijk case</span></div></a>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 case-box">
+            <div class="case-img">
+              <img src="img/case-home.jpg"/>
+              <h1>Schiphol Group</h1>
+            </div>
+            <div class="case">
+              <span class="description">Management Development</span>
+              <p>Schiphol Group is een world of opportunities. Er zijn zoveel verschillende disciplines, soorten afdelingen en werkzaamheden dat de interne mobiliteit heel interessant is. </p>
+            </div>
+            <a href=""><div class="title-block white"><span class="more-col">Bekijk case</span></div></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container title-block lightgrey">
+        <div class="row">
+          <div class="col-lg-12"><span class="more">Bekijk alle cases</span></div>
+        </div>
+      </div>
+
+    <!--Partners-->
+    <div class="container partners-con">
+      <div class="row partners">
+        <div class="col-lg-12"><span class="cases">ONZE KLANTEN</span></div>
+        <div id="carousel2" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel2" data-slide-to="1"></li>
+            <li data-target="#carousel2" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="active item">
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+            </div>
+            <div class="item">
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+              <div class="col-lg-2 col-sm-4 klant-logo">
+                <img src="img/klant-logo2.png"/>
+              </div>
+            </div>
+          </div><!-- end inner-->
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#carousel2" data-slide="prev"></a>
+          <a class="carousel-control right" href="#carousel2" data-slide="next"></a>
+        </div>
+      </div>
+    </div>
+
+    <!--Quote-->
+    <div class="container quote-con">
+      <div class="row quote">
+        <div class="col-lg-12">
+          <span class="quote-font">Spelende kinderen zijn nieuwsgierig, avontuurlijk en veerkrachtig en hebben het vermogen tot verrassende inzichten te komen. Dat vermogen is er nog steeds, in ieder van ons. </span>
+        </div>
+      </div>
+    </div>
+
+    <!--Blog-->
+    <div class="container blog-con">
+      <div class="row blog">
+        <div class="col-lg-12">
+          <span class="title text-white">blog</span>
+        </div>
+      </div>
+      <div class="blog-container">
+        <div class="item-blog">
+          <div class="blog-img">
+            <img src="img/blog-img.jpg"/>
+          </div>
+          <div class="blog-box">
+            <span class="tijd">2 weken geleden</span><a class="category">categorie</a>
+            <span class="blog-title">Leidinggeven: een goed</span>
+            <p>Iedere leider heeft zijn eigen uitdagingen. De ene leider ergert zich aan deadlines die nooit gehaald worden. Een andere leider stoort zich aan twee medewerkers die al maanden een conflict hebben. </p>
+            <a class="button blue-open">lees meer</a>
+          </div>
+        </div>
+        <div class="item-blog">
+          <div class="blog-tweet">
+            <span class="tijd-twitter">3 uur geleden</span>
+            <p>5 tips in de 'S' van een feedbackrijke cultuur? Nieuwe case: van zelfsturende teams in. Maar hoe pak je!</p>
+            <img class="twitter-icon" src="img/twitter-icon.svg"/>
+            <span class="author">@ludenstalentontwikkeling</span>
+          </div>
+        </div>
+        <div class="item-blog">
+          <div class="blog-img">
+            <img src="img/blog-img.jpg"/>
+          </div>
+          <div class="blog-box">
+            <span class="tijd">2 weken geleden</span><a class="category">categorie</a>
+            <span class="blog-title">Leidinggeven: een goed</span>
+            <p>Iedere leider heeft zijn eigen uitdagingen. De ene leider ergert zich aan deadlines die nooit gehaald worden. Een andere leider stoort zich aan twee medewerkers die al maanden een conflict hebben. </p>
+            <a class="button blue-open">lees meer</a>
+          </div>
+        </div>
+        <div class="item-blog">
+          <div class="blog-tweet">
+            <span class="tijd-twitter">3 uur geleden</span>
+            <p>5 tips in de 'S' van een feedbackrijke cultuur? Nieuwe case: van zelfsturende teams in. Maar hoe pak je!</p>
+            <img class="twitter-icon" src="img/twitter-icon.svg"/>
+            <span class="author">@ludenstalentontwikkeling</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container darkblue title-block-blog">
+      <div class="row darkblue">
+        <div class="col-lg-12"><span class="more-blog">Ga naar ons blog</span></div>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <div class="container footer-con">
+      <div class="row footer">
+        <div class="col-lg-2 col-sm-6 col-xs-12">
+          <span class="title">sitemap</span>
+          <ul class="footer-list">
+            <li><a href="">Homepage</a></li>
+            <li><a href="">Over ons</a></li>
+            <li><a href="">Wat we doen</a></li>
+            <li><a href="">Cases</a></li>
+            <li><a href="">Blog</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-xs-12">
+          <span class="title">onze diensten</span>
+          <ul class="footer-list">
+            <li><a href="">Management Development</a></li>
+            <li><a href="">Talentprogramma’s</a></li>
+            <li><a href="">Veranderprogramma’s</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-xs-12">
+          <span class="title">volg ons</span>
+          <ul class="footer-list">
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">LinkedIn</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-xs-12">
+          <span class="title">contact</span>
+          <ul class="footer-list">
+            <li>Koetshuis Den Dolder</li>
+            <li>Landgoed Ewijkshoeve</li>
+            <li>Soestdijkerweg 12a</li>
+            <li>3734 MH Den Dolder</li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-6 col-xs-12">
+          <span class="footer-title opacity">menu</span>
+          <ul class="footer-list">
+            <li>info@ludenstraining.nl</li>
+            <li>035-6668456</li>
+          </ul>
+        </div>
+      </div>
+
+      <!--copyright-->
+      <div class="row copyright">
+        <div class="lg-col-12"><span class="copyright-text">© Ludens Talentontwikkeling</span></div>
+      </div>
+    </div>
+
+  <script>
+    //Isotope|Masonry all blog items
+    var $container = $('.blog-container');
+    $container.imagesLoaded( function () {
+      $('.blog-container').isotope({
+        itemSelector: '.item-blog',
+      });
+    });
+
+    /*// Center slide img on resize
+    $( window ).resize(function() {
+      if ($(window).width() < 767){
+        var slide_img = $(".slide-home.carousel-fade .carousel-inner .item img");
+        var slide_width = $(".slide-home.carousel-fade .carousel-inner .item").width();
+        var slide_item = slide_width - 767;
+        $(slide_img).css({
+            left: slide_item / 2
+        });
+        console.log(slide_width);
+      }
+    });
+
+    if ($(window).width() < 767){
+      var slide_img = $(".slide-home.carousel-fade .carousel-inner .item img");
+      var slide_item = $(".slide-home.carousel-fade .carousel-inner .item").width() - 767;
+
+      $(slide_img).css({
+          left: slide_item / 2
+      });
+      console.log(slide_item);
+    }*/
+
+    //$('.item-blog:first-child').attr('style', 'left: -20px !important');
+
+    //$('.item-blog:first-child').attr('style', 'left: -20px !important');
+
+    /*$('.programma-textbox a div.title-block').hover(function(){
+      $('.programma-textbox a div.title-block').css('bottom','0px');
+    });*/
+    $( window ).resize(function() {
+      if ($(window).width() > 991){
+        $('.programma-textbox div.programma-content').css('bottom','-70px');
+        $('.programma-textbox a div.title-block').css('bottom','-70px');
+        $('.programma-textbox').hover(function(){
+          $(this).find('.programma-content').animate({
+            bottom:'0px'
+          },300);
+          $(this).find('a div.title-block').animate({
+            bottom:'0px'
+          },300);
+        },function() {
+          $(this).find('.programma-content').animate({
+            bottom:'-70px'
+          },300);
+          $(this).find('a div.title-block').animate({
+            bottom:'-70px'
+          },300);
+        });
+      } else {
+        $('.programma-textbox').unbind("mouseenter mouseleave");
+        $('.programma-textbox div.programma-content').css('bottom','0px');
+        $('.programma-textbox a div.title-block').css('bottom','0px');
+      }
+    });
+
+    //On page load
+    if ($(window).width() > 991){
+      $('.programma-textbox').hover(function(){
+        $(this).find('.programma-content').animate({
+          bottom:'0px'
+        },300);
+        $(this).find('a div.title-block').animate({
+          bottom:'0px'
+        },300);
+      },function() {
+        $(this).find('.programma-content').animate({
+          bottom:'-70px'
+        },300);
+        $(this).find('a div.title-block').animate({
+          bottom:'-70px'
+        },300);
+      });
+    }
+
+    //Progress bar
+    $(document).ready(function(){
+    			var percent = 0, bar = $('.transition-timer-carousel-progress-bar'), crsl = $('#carousel');
+    			function progressBarCarousel() {
+    			  bar.css({width:percent+'%'});
+    			 percent = percent +0.5;
+    			  if (percent>100) {
+    			      percent=0;
+    			      crsl.carousel('next');
+    			  }
+    			}
+    			crsl.carousel({
+    			    interval: false,
+    			    pause: true
+    			}).on('slid.bs.carousel', function () {percent=0;});var barInterval = setInterval(progressBarCarousel, 30);
+    			crsl.hover(
+    			    function(){
+    			        clearInterval(barInterval);
+    			    },
+    			    function(){
+    			        barInterval = setInterval(progressBarCarousel, 30);
+    			    })
+    		});
+  </script>
+</body>
+</html>
