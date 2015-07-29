@@ -1,5 +1,8 @@
 <?php
 /**
+ * Template Name: About Page
+ * Description: Page & Team members
+ *
  * @package		WordPress
  * @subpackage	Ludens
  * @since 		Ludens 0.1
@@ -11,11 +14,11 @@ if ( ! class_exists( 'Timber' ) ) {
 }
 
 $data = Timber::get_context();
-$data['posts'] = Timber::get_posts();
+$data['page'] = new TimberPost();
+$data['team_members'] = Timber::get_posts('post_type=team&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=-1');
+$data['team_categories'] = Timber::get_terms('team-cat');
 
-$templates = array( 'index.twig' );
-if( is_home() ){
-	array_unshift( $templates, 'home.twig' );
-}
+$templates = array( 'page-about.twig' );
+
 
 Timber::render( $templates, $data );

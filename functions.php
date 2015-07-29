@@ -44,7 +44,7 @@ class StarterSite extends TimberSite {
 			'menu_position' => 5,
 			'hierarchical' => true,
 			'has_archive' => false,
-			'supports' => array('title','thumbnail', 'page-attributes', 'editor'),
+			'supports' => array('title','thumbnail', 'page-attributes', 'editor', 'excerpt'),
 			'rewrite' => array('slug' => _x('programmas', 'URL slug', 'ludens'), 'with_front' => false)
 			)
 		);
@@ -171,31 +171,6 @@ class StarterSite extends TimberSite {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'case-cat' ),
-		);
-
-		register_taxonomy( 'case-cat', array( 'cases' ), $args );
-
-		$labels = array(
-			'name'              => _x( 'Categories', 'taxonomy general name' ),
-			'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-			'search_items'      => __( 'Search Category' ),
-			'all_items'         => __( 'All Categories' ),
-			'parent_item'       => __( 'Parent Category' ),
-			'parent_item_colon' => __( 'Parent Category:' ),
-			'edit_item'         => __( 'Edit Category' ),
-			'update_item'       => __( 'Update Category' ),
-			'add_new_item'      => __( 'Add New Category' ),
-			'new_item_name'     => __( 'New Category Name' ),
-			'menu_name'         => __( 'Categories' ),
-		);
-
-		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'query_var'         => true,
 			'rewrite'           => array( 'slug' => 'team-cat' ),
 		);
 
@@ -207,7 +182,9 @@ class StarterSite extends TimberSite {
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
-		$context['menu'] = new TimberMenu();
+		$context['menu_main'] = new TimberMenu(7);
+		$context['menu_footer'] = new TimberMenu(8);
+		$context['menu_social'] = new TimberMenu(12);
 		$context['site'] = $this;
 		return $context;
 	}

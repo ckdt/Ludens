@@ -1,0 +1,41 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<!-- header image -->
+	{% if page.thumbnail %}
+		<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+	{% endif %}
+
+	<!-- header copy -->
+	<h1>{{ page.title }}</h1>
+	{{page.get_field('subtitle')}}
+
+	<!-- main copy -->
+	{% for col in page.get_field('content_columns') %}
+
+		{% if loop.length == 1 or loop.length == 2 %}
+			<div class="col-6">
+		{% else %}
+			<div class="col-4">
+		{% endif %}
+
+			{{col.column}}
+		</div><!-- end column -->
+
+	{% endfor %}
+
+	<!-- team -->
+	<ul>
+	{% for cat in team_categories %}
+		<li><a href="#{{cat.slug}}">{{cat.name}}</a></li>
+	{% endfor %}
+	</ul>
+	
+	{% for member in team_members %}
+		<div class="{{member.terms|join(' ')|lower}} {{member.slug}}">
+			<img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}">
+			<a href="{{member.permalink}}">{{member.title}}</a>
+		</div>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,104 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- main slider -->
+	{% if slider_intro %}
+		{{ slider_intro }}
+	{% endif %}
+
+	{% if slider_button_label and slider_button_url %}
+		<a href="{{ slider_button_url }}" target="_blank">{{ slider_button_label }}</a>
+	{% endif %}
+
+	{% if slider_images %}
+		{% for slide in slider_images %}
+			<img src="{{TimberImage(slide).src}}">
+		{% endfor %}
+	{% endif %}
+
+	<!-- programma -->
+	{% if programma_items %}
+		{% for programma in programma_items %}
+
+			<a href="{{programma.permalink}}">
+				<img src="{{programma.thumbnail.src('medium')}}" alt="{{programma.thumbnail.title}}">
+			</a>
+
+			<a href="{{programma.permalink}}">{{programma.title}}</a>
+			<a href="{{programma.permalink}}">{{programma.get_field('subtitle')}}</a>
+			<a href="{{programma.permalink}}">Lees meer</a>
+			
+		{% endfor %}
+	{% endif %}
+
+	<hr>
+	<a href="#">Bekijk wat we doen</a>
+	<hr>
+
+	<!-- cases -->
+	<h3>Cases</h3>
+
+	{% if case_items %}
+		{% for case in case_items %}
+			
+			<a href="{{case.permalink}}">
+				<img src="{{case.thumbnail.src('medium')}}" alt="{{case.thumbnail.title}}">
+			</a>
+
+			{% for relation in case.get_field('related') %}
+				<a href="{{ relation.guid }}" >{{ relation.post_title }}</a>{% if loop.last == false %},{% endif %} 		
+			{% endfor %}
+
+			<a href="{{case.permalink}}">{{case.title}}</a>
+			{{case.get_preview(40,false,'',true)}}
+			<a href="{{case.permalink}}">Bekijk case</a>
+
+		{% endfor %}
+	{% endif %}
+
+	<hr>
+	<a href="#">Bekijk alle cases</a>
+	<hr>
+
+	<!-- client slider -->
+	{% if client_items %}
+		<ul>
+		{% for client in client_items %}
+			<li><img src="{{client.thumbnail.src('thumbnail')}}" alt="{{client.thumbnail.title}}"></li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+
+	<!-- Quotes  -->
+	{% if quote %}
+		<blockquote>{{ quote.get_field('quote_text') }}</blockquote>
+	{% endif %}
+
+	<!-- Blog  -->
+	<h3>Blog</h3>
+	{% if posts %}
+		{% for post in posts %}
+			
+			<a href="{{post.permalink}}">
+				<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
+			</a>
+
+			<time>{{post.post_date_gmt|time_ago}}</time>
+
+			{% for term in post.terms %}
+				{{term.name}}
+			{% endfor %}
+
+			<a href="{{post.permalink}}">{{post.title}}</a>
+			{{post.get_preview(40,false,'',true)}}
+			<a href="{{post.permalink}}">Lees meer</a>
+
+		{% endfor %}
+	{% endif %}
+
+	<hr>
+	<a href="#">Ga naar ons blog</a>
+	<hr>
+
+{% endblock %}

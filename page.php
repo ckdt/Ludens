@@ -1,27 +1,45 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * To generate specific templates for your pages you can use:
- * /mytheme/views/page-mypage.twig
- * (which will still route through this PHP file)
- * OR
- * /mytheme/page-mypage.php
- * (in which case you'll want to duplicate this file and save to the above path)
- *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
+ * @package		WordPress
+ * @subpackage	Ludens
+ * @since 		Ludens 0.1
  */
 
-$context = Timber::get_context();
-$post = new TimberPost();
-$context['post'] = $post;
-Timber::render( array( 'page-' . $post->post_name . '.twig', 'page.twig' ), $context );
+if ( ! class_exists( 'Timber' ) ) {
+	echo 'Timber not activated. Make sure you activate the plugin in <a href="/wp-admin/plugins.php#timber">/wp-admin/plugins.php</a>';
+	return;
+}
+
+$data = Timber::get_context();
+$data['page'] = new TimberPost();
+
+$templates = array( 'page-' . $post->post_name . '.twig', 'page.twig' );
+
+// Homepage
+if (is_front_page()){  
+	
+	// Carousel
+	$data['slider_images'] = get_field('slider_images');
+	$data['slider_intro'] = get_field('slider_intro');
+	$data['slider_button_label'] = get_field('slider_button_label');
+	$data['slider_button_url'] = get_field('slider_button_url');
+
+	// Programma's
+	$data['programma_items'] = Timber::get_posts('post_type=programmas&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
+
+	// Cases
+	$data['case_items'] = Timber::get_posts('post_type=cases&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
+
+	// Klanten
+	$data['client_items'] = Timber::get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC');
+
+	// Quote's
+	$data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');
+
+	// Blog
+	$data['posts'] = Timber::get_posts('post_type=post&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=2');
+
+	array_unshift($templates, 'home.twig');
+}
+
+Timber::render( $templates, $data );

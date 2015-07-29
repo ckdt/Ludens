@@ -1,1 +1,74 @@
-Copyright {{"now"|date('Y')}}
+<!-- Sitemap -->
+<strong>Sitemap</strong>
+
+<nav id="nav-sitemap" class="nav-sitemap" role="navigation">
+	<ul class="nav">
+	{% for item in menu_main.get_items %}
+		<li class="nav-item {{item.classes | join(' ')}}">
+			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+			{% if item.get_children %}
+				<ul class="nav nav-drop">
+				{% for child in item.get_children %}
+					<li class="nav-drop-item">
+						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+</nav>
+
+<!-- Services -->
+<strong>Onze Diensten</strong>
+
+<nav id="nav-services" class="nav-services" role="navigation">
+	<ul class="nav">
+	{% for item in menu_footer.get_items %}
+		<li class="nav-item {{item.classes | join(' ')}}">
+			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+			{% if item.get_children %}
+				<ul class="nav nav-drop">
+				{% for child in item.get_children %}
+					<li class="nav-drop-item">
+						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+</nav>
+
+<!-- Social -->
+<strong>Volg Ons</strong>
+
+<nav id="nav-social" class="nav-social" role="navigation">
+	<ul class="nav">
+	{% for item in menu_social.get_items %}
+		<li class="nav-item {{item.classes | join(' ')}}">
+			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+			{% if item.get_children %}
+				<ul class="nav nav-drop">
+				{% for child in item.get_children %}
+					<li class="nav-drop-item">
+						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endfor %}
+	</ul>
+</nav>
+
+Koetshuis Den Dolder Landgoed Ewijkshoeve Soestdijkerweg 12a 3734 MH Den Dolder
+
+
+info@ludenstraining.nl
+035-6668456
+
+
+&copy; {{"now"|date('Y')}} Ludens Talentontwikkeling 
