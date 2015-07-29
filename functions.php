@@ -117,7 +117,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes'),
-			'rewrite' => array('slug' => _x('team', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('over-ons', 'URL slug', 'ludens'), 'with_front' => false)
 			)
 		);
 		register_post_type('quotes',
