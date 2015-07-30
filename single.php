@@ -20,8 +20,10 @@ $data['team_categories'] = Timber::get_terms('team-cat');
 
 
 $related_posts = get_field('related', $post->ID);
-foreach ($related_posts as $rel) {
-	$data['post_related'][] =  new TimberPost($rel->ID);
+if($related_posts ){
+	foreach ($related_posts as $rel) {
+		$data['post_related'][] =  new TimberPost($rel->ID);
+	}
 }
 
 // Quote's
