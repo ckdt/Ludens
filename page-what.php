@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: About Page
- * Description: Page & Team members
+ * Template Name: What we do Page
+ * Description: Page & Programs
  *
  * @package		WordPress
  * @subpackage	Ludens
@@ -16,14 +16,14 @@ if ( ! class_exists( 'Timber' ) ) {
 $data = Timber::get_context();
 $data['page'] = new TimberPost();
 
-// Team
-$data['team_members'] = Timber::get_posts('post_type=team&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=-1');
-$data['team_categories'] = Timber::get_terms('team-cat');
+// Programma's
+$data['programma_items'] = Timber::get_posts('post_type=programmas&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
+
 
 // Quote's
 $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');
 
-$templates = array( 'page-about.twig' );
+$templates = array( 'page-what.twig' );
 
 
 Timber::render( $templates, $data );

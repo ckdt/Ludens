@@ -1,0 +1,49 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{{satrya}}
+	
+	<pre>
+	{{ dump(post) }}
+	</pre>
+
+	<h1>{{ post.title }}</h1>
+	{{ post.get_field('member_job') }}
+
+	<img src="{{ post.thumbnail.src('large') }}">
+
+	{{ post.get_field('member_description') }}
+
+	{% if post.get_field('link_email') %}
+		<a href="{{ post.get_field('link_email') }}" class="link-mail"> E-mail </a>
+	{% endif %}
+	{% if post.get_field('link_linkedin') %}
+		<a href="{{ post.get_field('link_linkedin') }}" class="link-linkedin"> LinkedIn </a>
+	{% endif %}
+	{% if post.get_field('link_twitter') %}
+		<a href="{{ post.get_field('link_twitter') }}" class="link-twitter"> Twitter </a>
+	{% endif %}
+
+	<!-- team -->
+	<ul>
+	{% for cat in team_categories %}
+		<li><a href="#{{cat.slug}}">{{cat.name}}</a></li>
+	{% endfor %}
+	</ul>
+	
+	{% for member in team_members %}
+		<div class="{{member.terms|join(' ')|lower}} {{member.slug}}">
+			<img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}">
+			<a href="{{member.permalink}}">{{member.title}}</a>
+			{{member.get_field('	member_job')}}
+		</div>
+	{% endfor %}
+
+	<!-- Quotes  -->
+	{% if quote %}
+		<blockquote>{{ quote.get_field('quote_text') }}</blockquote>
+	{% endif %}
+
+
+{% endblock %}

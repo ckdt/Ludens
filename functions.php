@@ -45,7 +45,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes', 'editor', 'excerpt'),
-			'rewrite' => array('slug' => _x('programmas', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('wat-we-doen', 'URL slug', 'ludens'), 'with_front' => false)
 			)
 		);
 		register_post_type('klanten',

@@ -24,20 +24,23 @@
 
 	{% endfor %}
 
-	<!-- team -->
-	<ul>
-	{% for cat in team_categories %}
-		<li><a href="#{{cat.slug}}">{{cat.name}}</a></li>
-	{% endfor %}
-	</ul>
-	
-	{% for member in team_members %}
-		<div class="{{member.terms|join(' ')|lower}} {{member.slug}}">
-			<img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}">
-			<a href="{{member.permalink}}">{{member.title}}</a>
-			{{member.get_field('	member_job')}}
-		</div>
-	{% endfor %}
+	<!-- programma -->
+	{% if programma_items %}
+		{% for programma in programma_items %}
+
+			<a href="{{programma.permalink}}">
+				<img src="{{programma.thumbnail.src('medium')}}" alt="{{programma.thumbnail.title}}">
+			</a>
+
+			<a href="{{programma.permalink}}">{{programma.title}}</a>
+			{{programma.get_field('subtitle')}}
+
+			{{programma.get_preview(40,false,'',true)}}
+			
+			<a href="{{programma.permalink}}">Lees meer</a>
+			
+		{% endfor %}
+	{% endif %}
 
 	<!-- Quotes  -->
 	{% if quote %}

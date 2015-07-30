@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<h1>{{ post.title }}</h1>
+	{{ post.get_field('subtitle') }}
+
+	<img src="{{ post.thumbnail.src('full') }}">
+	
+	{{ post.content }}
+
+	<!-- Sidebar -->
+	Gerelateerde Cases
+
+	{% for rel in post_related %}
+
+			<a href="{{rel.permalink}}">
+				<img src="{{rel.thumbnail.src('medium')}}" alt="{{rel.thumbnail.title}}">
+			</a>
+			<a href="{{rel.permalink}}">{{rel.title}}</a>
+			<a href="{{rel.permalink}}">{{rel.get_field('subtitle')}}</a>
+			{{rel.get_preview(40,false,'',true)}}
+			<a href="{{rel.permalink}}">Bekijk Case</a>
+
+	{% endfor %}
+
+{% endblock %}
