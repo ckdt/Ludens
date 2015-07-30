@@ -279,7 +279,6 @@
             "comments",
             "revisions",
             "format",
-            "page_attributes",
             "categories",
             "tags",
             "send-trackbacks"
@@ -423,6 +422,69 @@
         "menu_order": 0,
         "position": "normal",
         "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": ""
+    },
+    {
+        "key": "group_55b8d830eaa2c",
+        "title": "Quote Fields",
+        "fields": [
+            {
+                "key": "field_55b8d837943d1",
+                "label": "Quote",
+                "name": "quote_text",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Uw quote hier",
+                "maxlength": "",
+                "rows": 4,
+                "new_lines": "",
+                "readonly": 0,
+                "disabled": 0
+            },
+            {
+                "key": "field_55b8d84f943d2",
+                "label": "Auteur",
+                "name": "quote-author",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "Door...",
+                "prepend": "",
+                "append": "",
+                "maxlength": "",
+                "readonly": 0,
+                "disabled": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "quotes"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "seamless",
         "label_placement": "top",
         "instruction_placement": "label",
         "hide_on_screen": ""
