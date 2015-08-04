@@ -1,0 +1,19 @@
+/*!
+ * Theme Name: Ludens
+ * Description: Custom Wordpress theme for Ludens Training
+ * Author: Satrya Sabeni
+*/
+
+
+
+// Import Bootstrap Compass integration
+@import "bootstrap-compass";
+
+// Import custom Bootstrap variables
+@import "bootstrap-variables";
+
+// Import Bootstrap for Sass
+@import "bootstrap";
+
+//Import custom style
+@import "custom-style";

@@ -16,8 +16,8 @@ $data['page'] = new TimberPost();
 $templates = array( 'page-' . $post->post_name . '.twig', 'page.twig' );
 
 // Homepage
-if (is_front_page()){  
-	
+if (is_front_page()){
+
 	// Carousel
 	$data['slider_images'] = get_field('slider_images');
 	$data['slider_intro'] = get_field('slider_intro');

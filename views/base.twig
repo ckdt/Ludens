@@ -5,33 +5,27 @@
 	{% endblock %}
 	</head>
 {% endblock %}
-
 	<body class="{{body_class}}" data-template="base.twig">
-		<header class="header" >
+		<header class="container {{nav_container_home}}">
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						<ul class="nav">
-						{% for item in menu_main.get_items %}
-							<li class="nav-item {{item.classes | join(' ')}}">
-								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-								{% if item.get_children %}
-									<ul class="nav nav-drop">
-									{% for child in item.get_children %}
-										<li class="nav-drop-item">
-											<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
-										</li>
-									{% endfor %}
-									</ul>
-								{% endif %}
-							</li>
-						{% endfor %}
-						</ul>
-					</nav><!-- #nav -->
-				</div>
+				<!--Navbar Desktop-->
+				<nav class="navbar navbar-default {{header_home}} hidden-xs">
+					<div class="container-fluid menu">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="{{site.url}}"><img src="{{ theme.link }}/img/{{logo_home}}" /></a>
+						</div>
+						<div class="collapse navbar-collapse" id="navbar-collapse">
+		          <ul class="nav navbar-nav {{nav_home}}">
+								{% for item in menu_main.get_items %}
+									<li {% if page_title == item.title %} class="active" {% endif %}><a href="{{item.get_path}}">{{item.title}}</a></li>
+								{% endfor %}
+		          </ul>
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="phone"><i class="phone-icon"></i><span class="tel-num text-white">035-6668456</span></li>
+		          </ul>
+		        </div>
+		      </div>
+		    </nav>
 			{% endblock %}
 		</header>
 
@@ -50,7 +44,7 @@
 		</section>
 
 		{% block footer %}
-			<footer id="footer">
+			<footer id="footer" class="container footer-con">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}

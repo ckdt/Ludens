@@ -1,50 +1,76 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<!-- header image -->
+	<!--Header-->
 	{% if page.thumbnail %}
-		<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+		<div class="container pagehead-con">
+			<div class="row">
+			 <img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+			</div>
+		</div>
 	{% endif %}
 
-	<!-- header copy -->
-	<h1>{{ page.title }}</h1>
-	{{page.get_field('subtitle')}}
+	<!--pagehead title and description-->
+	<div class="container pagetitle-con">
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="page-title">
+					<h1>{{ page.title }}</h1>
+					<p>{{page.get_field('subtitle')}}</p>
+				</span>
+			</div>
+		</div>
+	</div>
 
-	<!-- main copy -->
-	{% for col in page.get_field('content_columns') %}
+	<!--Text-->
+	<div class="container white">
+  	<div class="row about-textbox">
+			{% for col in page.get_field('content_columns') %}
+				{% if loop.length == 1 or loop.length == 2 %}
+					<div class="col-md-6 col-xs-12 about-text">
+				{% else %}
+					<div class="col-md-4 col-xs-12 about-text">
+				{% endif %}
+					{{col.column}}
+				</div><!-- end column -->
+			{% endfor %}
+		</div>
+	</div>
 
-		{% if loop.length == 1 or loop.length == 2 %}
-			<div class="col-6">
-		{% else %}
-			<div class="col-4">
+	<!--programmas-->
+	<div class="container programma-con">
+    <div class="row programma-box">
+		{% if programma_items %}
+			{% for programma in programma_items %}
+				<div class="col-md-4 col-sm-6 col-xs-12">
+					<div class="programma-infobox">
+						<a href="{{programma.permalink}}">
+							<div class="programma-infobox-img">
+								<img src="{{programma.thumbnail.src('medium')}}" alt="{{programma.thumbnail.title}}">
+							</div>
+						</a>
+						<div class="programma-content">
+							<h2><a href="{{programma.permalink}}">{{programma.title}}</a></h2>
+							<span class="description">{{programma.get_field('subtitle')}}</span>
+							<p>{{programma.get_preview(35,false,'',true)}}</p>
+						</div>
+						<a href="{{programma.permalink}}"><div class="title-block white">Lees meer</div></a>
+					</div>
+				</div>
+			{% endfor %}
 		{% endif %}
+		</div>
+	</div>
 
-			{{col.column}}
-		</div><!-- end column -->
-
-	{% endfor %}
-
-	<!-- programma -->
-	{% if programma_items %}
-		{% for programma in programma_items %}
-
-			<a href="{{programma.permalink}}">
-				<img src="{{programma.thumbnail.src('medium')}}" alt="{{programma.thumbnail.title}}">
-			</a>
-
-			<a href="{{programma.permalink}}">{{programma.title}}</a>
-			{{programma.get_field('subtitle')}}
-
-			{{programma.get_preview(40,false,'',true)}}
-			
-			<a href="{{programma.permalink}}">Lees meer</a>
-			
-		{% endfor %}
-	{% endif %}
-
-	<!-- Quotes  -->
+	<!--Quote-->
 	{% if quote %}
-		<blockquote>{{ quote.get_field('quote_text') }}</blockquote>
+  <div class="container quote-con">
+    <div class="row quote darkgrey">
+      <div class="col-lg-12">
+        <span class="quote-font text-white">{{ quote.get_field('quote_text') }}</span>
+      </div>
+    </div>
+  </div>
 	{% endif %}
 
 

@@ -1,15 +1,39 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	hallo?
-	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
-	</div><!-- /content-wrapper -->
+	<!--Header-->
+	{% if page.thumbnail %}
+		<div class="container pagehead-con">
+			<div class="row">
+			 <img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+			</div>
+		</div>
+	{% endif %}
+
+	<!--pagehead title and description-->
+	<div class="container pagetitle-con">
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="page-title">
+					<h1>{{ page.title }}</h1>
+					<p>{{page.get_field('subtitle')}}</p>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<!--Text-->
+	<div class="container white">
+		<div class="row about-textbox">
+			{% for col in page.get_field('content_columns') %}
+				{% if loop.length == 1 or loop.length == 2 %}
+					<div class="col-md-6 col-xs-12 about-text">
+				{% else %}
+					<div class="col-md-4 col-xs-12 about-text">
+				{% endif %}
+					{{col.column}}
+				</div><!-- end column -->
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

@@ -144,7 +144,7 @@ class StarterSite extends TimberSite {
 			'rewrite' => array('slug' => _x('quotes', 'URL slug', 'ludens'), 'with_front' => false)
 			)
 		);
-	
+
 
 	}
 
@@ -179,6 +179,18 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_context( $context ) {
+		if(is_front_page()){
+			$context['nav_container_home'] = 'nav-con-home';
+			$context['header_home'] = 'header-home';
+			$context['nav_home'] = 'home-nav';
+			$context['logo_home'] = 'logo-home.svg';
+		} else {
+			$context['nav_container_home'] = 'nav-con';
+			$context['header_home'] = 'header';
+			$context['logo_home'] = 'logo-color.svg';
+		}
+		global $post;
+		$context['page_title'] = $post->post_title;
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
@@ -204,3 +216,15 @@ function myfoo( $text ) {
 	$text .= ' bar!';
 	return $text;
 }
+
+function theme_name_scripts() {
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/javascripts/bootstrap.min.js', array(), '3.3.5', true );
+	wp_enqueue_script( 'jasny-bootstrap', get_template_directory_uri() . '/javascripts/jasny-bootstrap.min.js', array(), '3.1.3', true );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/javascripts/isotope.pkgd.min.js', array(), '2.2.0', true );
+	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
+	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
+	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );

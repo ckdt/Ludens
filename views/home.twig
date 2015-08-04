@@ -3,102 +3,174 @@
 {% block content %}
 
 	<!-- main slider -->
-	{% if slider_intro %}
-		{{ slider_intro }}
-	{% endif %}
+	<div id="carousel" class="carousel slide carousel-fade slide-home" data-ride="carousel">
+		<!-- Carousel items -->
+    <div class="carousel-inner">
+		{% if slider_images %}
+			{% for slide in slider_images %}
+				{% if loop.first %}
+				<div class="item active">
+				{% else %}
+				<div class="item">
+				{% endif %}
+					<img src="{{TimberImage(slide).src}}">
+				</div>
+			{% endfor %}
+		{% endif %}
+		</div>
+	</div>
 
-	{% if slider_button_label and slider_button_url %}
-		<a href="{{ slider_button_url }}" target="_blank">{{ slider_button_label }}</a>
-	{% endif %}
-
-	{% if slider_images %}
-		{% for slide in slider_images %}
-			<img src="{{TimberImage(slide).src}}">
-		{% endfor %}
-	{% endif %}
+	<!--pagehead title and description-->
+  <div class="container intro-con">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="intro">
+					{% if slider_intro %}
+          	<p class="intro-text text-white">{{ slider_intro }}</p>
+          {% endif %}
+					{% if slider_button_label and slider_button_url %}
+						<a class="intro-button" href="{{ slider_button_url }}">{{ slider_button_label }}</a>
+					{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 
 	<!-- programma -->
-	{% if programma_items %}
-		{% for programma in programma_items %}
-
-			<a href="{{programma.permalink}}">
-				<img src="{{programma.thumbnail.src('medium')}}" alt="{{programma.thumbnail.title}}">
-			</a>
-
-			<a href="{{programma.permalink}}">{{programma.title}}</a>
-			<a href="{{programma.permalink}}">{{programma.get_field('subtitle')}}</a>
-			<a href="{{programma.permalink}}">Lees meer</a>
-			
-		{% endfor %}
-	{% endif %}
-
-	<hr>
-	<a href="#">Bekijk wat we doen</a>
-	<hr>
+	<div class="container programma-con">
+  	<div class="row programma-box">
+			{% if programma_items %}
+				{% for programma in programma_items %}
+					<div class="col-md-4 col-xs-12">
+						<div class="programma-textbox">
+							<a href="{{programma.permalink}}"><img src="{{programma.thumbnail.src('medium')}}" class="programma-img" alt="{{programma.thumbnail.title}}"></a>
+							<div class="programma-content">
+								<h2><a href="{{programma.permalink}}">{{programma.title}}</a></h2>
+								<span class="description">{{programma.get_field('subtitle')}}</span>
+							</div>
+							<a href="{{programma.permalink}}"><div class="title-block">Lees meer</div></a>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="container title-block bekijk">
+		<div class="row">
+	  	<div class="col-lg-12"><a href=""><span class="more">Bekijk wat we doen</span></a></div>
+	  </div>
+	</div>
 
 	<!-- cases -->
-	<h3>Cases</h3>
+	<div class="container cases-con">
+  	<div class="row cases-home">
+			<div class="col-lg-12"><span class="title">Cases</span></div>
+			{% if case_items %}
+				{% for case in case_items %}
+					<div class="col-lg-6 col-md-6 col-sm-6 case-box">
+						<a href="{{case.permalink}}">
+							<div class="case-img">
+								<img src="{{case.thumbnail.src('medium')}}" alt="{{case.thumbnail.title}}">
+								<h1>{{case.title}}</h1>
+							</div>
+						</a>
+						<div class="case">
+							{% for relation in case.get_field('related')|slice(0, 1) %}
+							<span class="description"><a href="{{relation.guid}}">{{relation.post_title}}</a></span>
+							{% endfor %}
+							<p>{{case.get_preview(35,false,'',true)}}</p>
+						</div>
+						<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Bekijk case</span></div></a>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="container title-block lightgrey">
+    <div class="row">
+      <div class="col-lg-12"><span class="more"><a href="cases.html">Bekijk alle cases</a></span></div>
+    </div>
+  </div>
 
-	{% if case_items %}
-		{% for case in case_items %}
-			
-			<a href="{{case.permalink}}">
-				<img src="{{case.thumbnail.src('medium')}}" alt="{{case.thumbnail.title}}">
-			</a>
-
-			{% for relation in case.get_field('related') %}
-				<a href="{{ relation.guid }}" >{{ relation.post_title }}</a>{% if loop.last == false %},{% endif %} 		
-			{% endfor %}
-
-			<a href="{{case.permalink}}">{{case.title}}</a>
-			{{case.get_preview(40,false,'',true)}}
-			<a href="{{case.permalink}}">Bekijk case</a>
-
-		{% endfor %}
-	{% endif %}
-
-	<hr>
-	<a href="#">Bekijk alle cases</a>
-	<hr>
 
 	<!-- client slider -->
-	{% if client_items %}
-		<ul>
-		{% for client in client_items %}
-			<li><img src="{{client.thumbnail.src('thumbnail')}}" alt="{{client.thumbnail.title}}"></li>
-		{% endfor %}
-		</ul>
-	{% endif %}
+	<div class="container partners-con">
+    <div class="row partners">
+			<div class="col-lg-12"><span class="cases">ONZE KLANTEN</span></div>
+			<div id="carousel2" class="carousel slide carousel-fade" data-ride="carousel">
+				<ol class="carousel-indicators">
+          <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel2" data-slide-to="1"></li>
+          <li data-target="#carousel2" data-slide-to="2"></li>
+        </ol>
+				<div class="carousel-inner">
+					{% if client_items %}
+						{% for client_slide in client_items|batch(6) %}
+							{% if loop.first %}
+							<div class="active item">
+							{% else %}
+								<div class="item">
+							{% endif %}
+								{% for client in client_slide %}
+									<div class="col-lg-2 col-md-3 col-sm-3 klant-logo">
+										<img src="{{client.thumbnail.src('thumbnail')}}" alt="{{client.thumbnail.title}}"/>
+									</div>
+								{% endfor %}
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div><!--end carousel-inner-->
+			</div>
+		</div>
+	</div>
 
-	<!-- Quotes  -->
+	<!--Quote-->
 	{% if quote %}
-		<blockquote>{{ quote.get_field('quote_text') }}</blockquote>
+		<div class="container quote-con">
+      <div class="row quote">
+        <div class="col-lg-12">
+          <span class="quote-font">{{ quote.get_field('quote_text') }}</span>
+        </div>
+      </div>
+    </div>
 	{% endif %}
 
-	<!-- Blog  -->
-	<h3>Blog</h3>
-	{% if posts %}
-		{% for post in posts %}
-			
-			<a href="{{post.permalink}}">
-				<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
-			</a>
-
-			<time>{{post.post_date_gmt|time_ago}}</time>
-
-			{% for term in post.terms %}
-				{{term.name}}
-			{% endfor %}
-
-			<a href="{{post.permalink}}">{{post.title}}</a>
-			{{post.get_preview(40,false,'',true)}}
-			<a href="{{post.permalink}}">Lees meer</a>
-
-		{% endfor %}
-	{% endif %}
-
-	<hr>
-	<a href="#">Ga naar ons blog</a>
-	<hr>
+	<!--Blog-->
+	<div class="container blog-con">
+    <div class="row blog">
+			<div class="col-lg-12">
+        <span class="title text-white">blog</span>
+      </div>
+    </div>
+		<div class="blog-container">
+			{% if posts %}
+				{% for post in posts %}
+					<div class="item-blog">
+						<div class="blog-img">
+							<a href="{{post.permalink}}">
+								<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
+							</a>
+						</div>
+						<div class="blog-box">
+							<a class="tijd" href="blog-post.html"><time>{{post.post_date_gmt|time_ago}}</time></a>
+							<a class="category">
+								{% for term in post.terms %}
+									{{term.name}}
+								{% endfor %}
+							</a>
+							<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
+							<p>{{post.get_preview(40,false,'',true)}}</p>
+							<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
+						</div>
+					</div><!--end blog-item-->
+				{% endfor %}
+			{% endif %}
+		</div><!--end blog-container-->
+	</div>
+	<div class="container darkblue title-block-blog">
+    <div class="row darkblue">
+      <div class="col-lg-12"><span class="more-blog">Ga naar ons blog</span></div>
+    </div>
+  </div>
 
 {% endblock %}
