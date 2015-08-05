@@ -2,41 +2,89 @@
 
 {% block content %}
 
-	<h1>{{ post.title }}</h1>
-	{{ post.get_field('member_job') }}
+	<!--Broodkruimels-->
+	<div class="container white">
+		<div class="row title-block kruimel">
+			<div class="col-lg-12">
+			<span class="more"><span class="more text-grey">Over ons > {{tabname}} > huib hardeman</span>
+			</div>
+		</div>
+	</div>
 
-	<img src="{{ post.thumbnail.src('large') }}">
+	<!--About text-->
+  <div class="container white">
+    <div class="row">
+			<div class="col-lg-12 profile">
+				<div class="profile-img">
+          <img src="{{ post.thumbnail.src('large') }}"/>
+        </div>
+				<div class="information">
+					<h1>{{ post.title }}</h1>
+				 	<span>{{ post.get_field('member_job') }}</span>
 
-	{{ post.get_field('member_description') }}
+					<p>{{ post.get_field('member_description') }}</p>
 
-	{% if post.get_field('link_email') %}
-		<a href="{{ post.get_field('link_email') }}" class="link-mail"> E-mail </a>
-	{% endif %}
-	{% if post.get_field('link_linkedin') %}
-		<a href="{{ post.get_field('link_linkedin') }}" class="link-linkedin"> LinkedIn </a>
-	{% endif %}
-	{% if post.get_field('link_twitter') %}
-		<a href="{{ post.get_field('link_twitter') }}" class="link-twitter"> Twitter </a>
-	{% endif %}
+					{% if post.get_field('link_email') %}
+						<a class="media" id="email" href="{{ post.get_field('link_email') }}" class="link-mail"><i class="email"></i><span>E-mail</span></a>
+					{% endif %}
+					{% if post.get_field('link_linkedin') %}
+						<a class="media" id="linkedin" href="{{ post.get_field('link_linkedin') }}" class="link-linkedin"><i class="linkedin"></i><span>LinkedIn</span></a>
+					{% endif %}
+					{% if post.get_field('link_twitter') %}
+						<a class="media" id="twitter" href="{{ post.get_field('link_twitter') }}" class="link-twitter"><i class="twitter"></i><span>Twitter</span></a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- team -->
-	<ul>
-	{% for cat in team_categories %}
-		<li><a href="#{{cat.slug}}">{{cat.name}}</a></li>
-	{% endfor %}
-	</ul>
-	
-	{% for member in team_members %}
-		<div class="{{member.terms|join(' ')|lower}} {{member.slug}}">
-			<img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}">
-			<a href="{{member.permalink}}">{{member.title}}</a>
-			{{member.get_field('	member_job')}}
-		</div>
-	{% endfor %}
+	<div class="container white">
+  	<div class="row">
+			<div class="col-lg-12">
+				<ul class="nav nav-tabs" role="tablist">
+					{% for cat in team_categories %}
+						<li {% if loop.first %}class="active"{% endif %}><a href="#{{cat.slug}}" aria-controls="{{cat.slug}}" role="tab" data-toggle="tab">{{cat.name}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
 
-	<!-- Quotes  -->
+			<div class="col-lg-12 team">
+        <!-- Tab panes -->
+        <div class="tab-content">
+					{% for term,category in holder %}
+					{% set tabname = term %}
+					<div role="tabpanel" class="tab-pane{% if loop.first %} active{% endif %}" id="{{term}}">
+						{% for person in category %}
+							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<div class="person {{person.terms|join(' ')|lower}} {{person.slug}}">
+									<div class="person-img">
+	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src('medium')}}"/></a>
+	              	</div>
+									<div class="person-info">
+	                  <h3><a href="{{person.permalink}}#{{tabname}}">{{person.title}}</a></h3>
+	                  <p>{{person.get_field('member_job')}}</p>
+	                </div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div><!--end .team-->
+
+		</div>
+	</div>
+
+	<!--Quote-->
 	{% if quote %}
-		<blockquote>{{ quote.get_field('quote_text') }}</blockquote>
+  <div class="container quote-con">
+    <div class="row quote darkgrey">
+      <div class="col-lg-12">
+        <span class="quote-font text-white">{{ quote.get_field('quote_text') }}</span>
+      </div>
+    </div>
+  </div>
 	{% endif %}
 
 

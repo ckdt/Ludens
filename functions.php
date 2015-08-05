@@ -117,7 +117,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes'),
-			'rewrite' => array('slug' => _x('over-ons', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('over-ons', 'URL slug', 'ludens'), 'with_front' => false),
 			)
 		);
 		register_post_type('quotes',
@@ -217,6 +217,11 @@ function myfoo( $text ) {
 	return $text;
 }
 
+function test( $text ) {
+	$text .= ' bar!';
+	return $text;
+}
+
 function theme_name_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/javascripts/bootstrap.min.js', array(), '3.3.5', true );
@@ -225,6 +230,7 @@ function theme_name_scripts() {
 	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
 	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'nav-tabs-sticky', get_template_directory_uri() . '/javascripts/sticky-tabs.js', array(), '1.2.0', true );
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );

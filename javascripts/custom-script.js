@@ -7,4 +7,13 @@ jQuery(document).ready(function($) {
       itemSelector: '.item-blog',
     });
   });
+
+
+  var options = {
+    backToTop: false
+  };
+  $('.nav-tabs').stickyTabs(options);
+
+
+
 });

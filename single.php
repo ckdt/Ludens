@@ -18,7 +18,26 @@ $data['comment_form'] = TimberHelper::get_comment_form();
 $data['team_members'] = Timber::get_posts('post_type=team&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=-1');
 $data['team_categories'] = Timber::get_terms('team-cat');
 
+$holder = array();
+$taxonomy = Timber::get_terms( 'team-cat');
+foreach($taxonomy as $term){
+	${"args_".$term->slug} = array(
+		'post_type' => 'team',
+		'orderby' => 'menu_order',
+		'post_status' => 'publish',
+		'tax_query' => array(
+				array(
+				'taxonomy' => 'team-cat',
+				'terms' => $term->term_id)
+	));
+	$holder[$term->slug] = Timber::get_posts(${"args_".$term->slug});
+}
 
+$data['holder'] = $holder;
+
+
+
+//related posts
 $related_posts = get_field('related', $post->ID);
 if($related_posts ){
 	foreach ($related_posts as $rel) {

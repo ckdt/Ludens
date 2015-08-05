@@ -44,7 +44,7 @@
         <!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					{% for cat in team_categories %}
-						<li><a href="#{{cat.slug}}" aria-controls="{{cat.slug}}" role="tab" data-toggle="tab">{{cat.name}}</a></li>
+						<li {% if loop.first %}class="active"{% endif %}><a href="#{{cat.slug}}" aria-controls="{{cat.slug}}" role="tab" data-toggle="tab">{{cat.name}}</a></li>
 					{% endfor %}
 				</ul>
 			</div>
@@ -52,36 +52,25 @@
 			<div class="col-lg-12 team">
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="kernteam">
-						{% for member in team_members|slice(0,1) %}
+					{% for term,category in holder %}
+					{% set tabname = term %}
+					<div role="tabpanel" class="tab-pane {% if loop.first %} active{% endif %}" id="{{term}}">
+						{% for person in category %}
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-	              <div class="person {{member.terms|join(' ')|lower}} {{member.slug}}">
-	                <div class="person-img">
-	                  <a href="over-persoon.html"><img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}"/></a>
+								<div class="person {{person.terms|join(' ')|lower}} {{person.slug}}">
+									<div class="person-img">
+	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src('medium')}}"/></a>
+	              	</div>
+									<div class="person-info">
+	                  <h3><a href="{{person.permalink}}#{{tabname}}">{{person.title}}</a></h3>
+	                  <p>{{person.get_field('member_job')}}</p>
 	                </div>
-	                <div class="person-info">
-	                  <h3><a href="{{member.permalink}}">{{member.title}}</a></h3>
-	                  <p>{{member.get_field('	member_job')}}</p>
-	                </div>
-	              </div>
-	            </div>
-						{% endfor %}
-					</div><!--end tab-->
-					<div role="tabpanel" class="tab-pane" id="partnerships">
-						{% for member in team_members %}
-							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-	              <div class="person {{member.terms|join(' ')|lower}} {{member.slug}}">
-	                <div class="person-img">
-	                  <a href="over-persoon.html"><img src="{{member.thumbnail.src('medium')}}" alt="{{member.title}}"/></a>
-	                </div>
-	                <div class="person-info">
-	                  <h3><a href="{{member.permalink}}">{{member.title}}</a></h3>
-	                  <p>{{member.get_field('	member_job')}}</p>
-	                </div>
-	              </div>
-	            </div>
+								</div>
+							</div>
 						{% endfor %}
 					</div>
+					{% endfor %}
+
 				</div>
 			</div><!--end .team-->
 		</div><!--end row-->
@@ -98,5 +87,11 @@
   </div>
 	{% endif %}
 
+
+	<script>
+		//(function($){
+			//$('.nav-tabs').stickyTabs();
+		//})(jQuery);
+	</script>
 
 {% endblock %}
