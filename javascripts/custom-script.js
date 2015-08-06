@@ -10,19 +10,33 @@ jQuery(document).ready(function($) {
   });
 
 
-  var options = {
-    backToTop: false
-  };
-  $('.nav-tabs').stickyTabs(options);
 
+  //function to open up tab in about
+  function activaTab(tab){
+      $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+  }
 
-  /*if (location.hash) {
-    window.scrollTo(0, 0);         // execute it straight away
-    setTimeout(function() {
-        console.log('TEST');
-        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-    }, 200);
-  }*/
+  // store the hash (DON'T put this code inside the $() function, it has to be executed
+  // right away before the browser can start scrolling!
+  var hash = window.location.hash,
+      target = hash.replace('#', '');
+
+  //open tab by getting hash of url
+  activaTab(target);
+  $('span#tab').text(target);
+
+  // delete hash so the page won't scroll to it
+  window.location.hash = "";
+
+  // now whenever you are ready do whatever you want
+  $(window).load(function() {
+      if (target) {
+          /*$('html, body').animate({
+              scrollTop: $("#" + target).offset().top
+          }, 1, 'swing', function () {});*/
+          window.scrollTo(0, 0);
+      }
+  });
 
 
   $('.person-img a').click(function(){
@@ -34,15 +48,5 @@ jQuery(document).ready(function($) {
         }, 1);
     }*/
   });
-});
 
-jQuery(window).load(function($) {
-//$(window).load(function() {
-  //if (location.hash) {
-    /*window.scrollTo(0, 0);         // execute it straight away
-    setTimeout(function() {
-        //console.log('TEST');
-        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-    }, 115);*/
-  //}
 });

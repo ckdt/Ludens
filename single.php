@@ -48,6 +48,10 @@ if($related_posts ){
 // Quote's
 $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');
 
+
+//page-title
+//$data['page_title'] = 'Over ons';
+
 if ( post_password_required( $post->ID ) ) {
 	Timber::render( 'single-password.twig', $data );
 } else {
