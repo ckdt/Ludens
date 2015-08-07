@@ -180,14 +180,16 @@ class StarterSite extends TimberSite {
 
 	function add_to_context( $context ) {
 		if(is_front_page()){
-			$context['nav_container_home'] = 'nav-con-home';
+			$context['nav_container_class'] = 'nav-con-home';
 			$context['header_home'] = 'header-home';
 			$context['nav_home'] = 'home-nav';
 			$context['logo_home'] = 'logo-home.svg';
+			$context['phone_class'] = 'phone-icon';
 		} else {
-			$context['nav_container_home'] = 'nav-con';
+			$context['nav_container_class'] = 'nav-con';
 			$context['header_home'] = 'header';
 			$context['logo_home'] = 'logo-color.svg';
+			$context['phone_class'] = 'phone-icon-grey';
 		}
 		global $post;
 		$context['page_title'] = $post->post_title;
@@ -217,20 +219,23 @@ function myfoo( $text ) {
 	return $text;
 }
 
-function test( $text ) {
+function single_active( $text ) {
 	$text .= ' bar!';
 	return $text;
 }
 
 function theme_name_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
-	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/javascripts/bootstrap.min.js', array(), '3.3.5', true );
+	wp_enqueue_style( 'jasny-bootstrap-style', get_template_directory_uri() . '/css/jasny-bootstrap.min.css', array(), '3.1.3');
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/javascripts/bootstrap1.min.js', array(), '3.3.5', true );
 	wp_enqueue_script( 'jasny-bootstrap', get_template_directory_uri() . '/javascripts/jasny-bootstrap.min.js', array(), '3.1.3', true );
 	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/javascripts/isotope.pkgd.min.js', array(), '2.2.0', true );
 	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
 	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
-	//wp_enqueue_script( 'nav-tabs-sticky', get_template_directory_uri() . '/javascripts/sticky-tabs.js', array(), '1.2.0', true );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
+	if(is_single()){
+		wp_enqueue_script( 'active-check', get_template_directory_uri() . '/javascripts/active-check.js', array(), '1.0.0', true );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );

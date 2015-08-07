@@ -1391,6 +1391,10 @@ a:hover.related-link-prog div.title-block
   width:100px;
   float:left;
 }
+.selected{
+  opacity: 0.5;
+  pointer-events: none;
+}
 /*-----------SLIDER--------------*/
 .transition-timer-carousel-progress-bar {
   height: 3px;

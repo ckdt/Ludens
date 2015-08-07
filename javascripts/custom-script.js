@@ -31,22 +31,16 @@ jQuery(document).ready(function($) {
   // now whenever you are ready do whatever you want
   $(window).load(function() {
       if (target) {
-          /*$('html, body').animate({
-              scrollTop: $("#" + target).offset().top
-          }, 1, 'swing', function () {});*/
           window.scrollTo(0, 0);
       }
   });
 
+  //put selected class on the selected person
+  var path = window.location.pathname;
+  var search = path.match("over-ons/(.*)/");
+  var selected = '.' + search[1];
+  console.log(selected);
 
-  $('.person-img a').click(function(){
-    //alert('deded');
-    /*if (location.hash) {               // do the test straight away
-      window.scrollTo(0, 0);         // execute it straight away
-        setTimeout(function() {
-            window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-        }, 1);
-    }*/
-  });
+  $(selected).addClass('selected');
 
 });
