@@ -1,6 +1,5 @@
 /// custom script ///
 jQuery(document).ready(function($) {
-  window.scrollTo(0, 0);
   //Isotope|Masonry all blog items
   var $container = $('.blog-container');
   $container.imagesLoaded( function () {
@@ -11,7 +10,7 @@ jQuery(document).ready(function($) {
 
 
 
-  //function to open up tab in about
+  //function to open up tab in about--------------------------------------
   function activaTab(tab){
       $('.nav-tabs a[href="#' + tab + '"]').tab('show');
   }
@@ -35,12 +34,21 @@ jQuery(document).ready(function($) {
       }
   });
 
-  //put selected class on the selected person
-  var path = window.location.pathname;
-  var search = path.match("over-ons/(.*)/");
-  var selected = '.' + search[1];
-  console.log(selected);
+  //store hash back for proper reload
+  /*setTimeout(function(){
+    window.location.hash = target;
+  },3000);*/
 
-  $(selected).addClass('selected');
+
+
+  //put selected class on the selected person--------------------------
+  if(window.location.href.indexOf('over-ons') > -1) {
+    var path = window.location.pathname;
+    var search = path.match("over-ons/(.*)/");
+    var selected = '.' + search[1];
+    //console.log(selected);
+
+    $(selected).addClass('selected');
+  }
 
 });
