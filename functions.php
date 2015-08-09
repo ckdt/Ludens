@@ -93,7 +93,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes', 'editor'),
-			'rewrite' => array('slug' => _x('cases', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('case', 'URL slug', 'ludens'), 'with_front' => true)
 			)
 		);
 		register_post_type('team',
@@ -192,7 +192,7 @@ class StarterSite extends TimberSite {
 			$context['phone_class'] = 'phone-icon-grey';
 		}
 		global $post;
-		$context['page_title'] = $post->post_title;
+		if($post){$context['page_title'] = $post->post_title;}
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
