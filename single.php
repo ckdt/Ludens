@@ -37,7 +37,7 @@ $data['holder'] = $holder;
 
 
 
-//related posts
+//related posts for case single
 $related_posts = get_field('related', $post->ID);
 if($related_posts ){
 	foreach ($related_posts as $rel) {
@@ -45,10 +45,32 @@ if($related_posts ){
 	}
 }
 
+//blog post related cases, programs and posts-----------
+
+//related cases for blogpost single page
+$rel_cases = get_field('related_cases', $post->ID);
+if($rel_cases){
+	foreach ($rel_cases as $rel) {
+		$data['related_cases'][] =  new TimberPost($rel->ID);
+	}
+}
+
+//related programs for blogpost single page
+$blog_posts = get_field('gerelateerde_blog_posts', $post->ID);
+if($blog_posts){
+	foreach ($blog_posts as $rel) {
+		$data['blog_posts'][] =  new TimberPost($rel->ID);
+	}
+}
+
+
 // Quote's
 $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');
 
 
+//page links
+$data['blog_link'] = get_page_link(108);
+$data['cases_link'] = get_page_link(104);
 
 if ( post_password_required( $post->ID ) ) {
 	Timber::render( 'single-password.twig', $data );

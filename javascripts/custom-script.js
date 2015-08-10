@@ -46,7 +46,7 @@ jQuery(document).ready(function($) {
     var path = window.location.pathname;
     var search = path.match("over-ons/(.*)/");
     var selected = '.' + search[1];
-    //console.log(selected);
+    console.log(selected);
 
     $(selected).addClass('selected');
   }

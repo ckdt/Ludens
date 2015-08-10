@@ -32,6 +32,7 @@ if (is_front_page()){
 
 	// Klanten
 	$data['client_items'] = Timber::get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC');
+	//var_dump(get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC'));
 
 	// Quote's
 	$data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');

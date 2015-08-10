@@ -25,7 +25,7 @@ $args = array(
 	'post_status' => 'publish',
 	'orderby' => 'menu_order',
 	'order' => 'DESC',
-	'posts_per_page' => 2,
+	'posts_per_page' => 3,
 	'paged' => $paged,
 	'ignore_sticky_posts' => 1,
 );
@@ -43,9 +43,3 @@ $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=
 $templates = array( 'page-cases.twig' );
 
 Timber::render( $templates, $data );
-
-
-
-foreach($cases as $pol){
-	echo 'pol';
-}

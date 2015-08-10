@@ -30,10 +30,15 @@
 					<div class="col-md-6 col-xs-12 about-text">
 				{% else %}
 					<div class="col-md-4 col-xs-12 about-text">
+					<div id="map-canvas"></div>
 				{% endif %}
 					{{col.column}}
 				</div><!-- end column -->
 			{% endfor %}
 		</div>
 	</div>
+
+
+	<div id="map-canvas">{#{call_google_map()}#}</div>
+
 {% endblock %}

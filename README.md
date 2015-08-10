@@ -5,3 +5,4 @@
 **06/08/2015** - tab navigation werkt nu, Active class now added to item menu of active page
 **07/08/2015** - Selected class now added to selected personin about
 **09/08/2015** - blog & cases have now pagination!
+**10/08/2015** - blogpost single implemented, google maps, contact form styled

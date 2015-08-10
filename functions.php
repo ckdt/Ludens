@@ -185,11 +185,13 @@ class StarterSite extends TimberSite {
 			$context['nav_home'] = 'home-nav';
 			$context['logo_home'] = 'logo-home.svg';
 			$context['phone_class'] = 'phone-icon';
+			$context['phone_num_class'] = 'tel-num text-white';
 		} else {
 			$context['nav_container_class'] = 'nav-con';
 			$context['header_home'] = 'header';
 			$context['logo_home'] = 'logo-color.svg';
 			$context['phone_class'] = 'phone-icon-grey';
+			$context['phone_num_class'] = 'tel-num';
 		}
 		global $post;
 		if($post){$context['page_title'] = $post->post_title;}
@@ -224,6 +226,9 @@ function single_active( $text ) {
 	return $text;
 }
 
+$twig = new Twig_Environment();
+$twig->addFunction('call_google_map', new Twig_Function_Function('call_google_map'));
+
 function theme_name_scripts() {
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 	wp_enqueue_style( 'jasny-bootstrap-style', get_template_directory_uri() . '/css/jasny-bootstrap.min.css', array(), '3.1.3');
@@ -236,6 +241,17 @@ function theme_name_scripts() {
 	if(is_single()){
 		wp_enqueue_script( 'active-check', get_template_directory_uri() . '/javascripts/active-check.js', array(), '1.0.0', true );
 	}
+	if(is_page('Cases')){
+		wp_enqueue_script('ajaxLoop' , get_template_directory_uri() . '/javascripts/ajaxLoop.js', array(), '1.0.0', true );
+	}
+	if(is_page('Contact')){
+		wp_enqueue_script('google_map-source' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD7NZZbNo0fDffz4l6AB36WDPK5KGZu4QY', array(), '1.0.0', true );
+		wp_enqueue_script('google_map' , get_template_directory_uri() . '/javascripts/google_map.js', array(), '1.0.0', true );
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+
+function call_google_map() {
+	echo '<div id="map-canvas"></div>';
+}

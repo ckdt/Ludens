@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-    if(window.location.href.indexOf('cases') > -1) {
+    if(window.location.href.indexOf('case') > -1) {
       $('li[id="Cases"]').addClass('active');
     } else if (window.location.href.indexOf('wat-we-doen') > -1) {
       $('li[id="Wat we doen"]').addClass('active');

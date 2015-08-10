@@ -26,7 +26,7 @@ $gray-base:              #1b1b1b;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-// $body-bg:               #fff
+ $body-bg:               rgb(101, 101, 101);
 //** Global text color on `<body>`.
 // $text-color:            $gray-dark
 
@@ -423,8 +423,8 @@ $container-tablet:             768px;
 
 // $nav-tabs-link-hover-border-color:          $gray-lighter
 
-// $nav-tabs-active-link-hover-bg:             $body-bg
-// $nav-tabs-active-link-hover-color:          $gray
+ $nav-tabs-active-link-hover-bg:             none;
+// $nav-tabs-active-link-hover-color:          red
 // $nav-tabs-active-link-hover-border-color:   #ddd
 
 // $nav-tabs-justified-link-border-color:            #ddd
