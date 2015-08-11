@@ -34,15 +34,15 @@
 					<span class="col-title">GERELATEERDE CASE</span>
 		      <div class="related">
 		        <div class="related-img">
-		          <img src="{{rel.thumbnail.src('medium')}}" alt="{{rel.thumbnail.title}}"/>
-		          <span>{{rel.title}}</span>
+		          <a href="{{rel.permalink}}"><img src="{{rel.thumbnail.src('medium')}}" alt="{{rel.thumbnail.title}}"/></a>
+		          <a href="{{rel.permalink}}"><span>{{rel.title}}</span></a>
 		        </div>
 		        <div class="related-content">
 		          <span class="description">{{ post.title }}</span>
 		          <p>{{rel.get_preview(35,false,'',true)}}</p>
 		        </div>
 		        <a href="{{rel.permalink}}" class="related-link-case first"><div class="title-block"><span class="more-col">Meer informatie</span></div></a>
-		        <a href="" class="related-link-case"><div class="title-block"><span class="more-col">Bekijk alle cases</span></div></a>
+		        <a href="{{cases_link}}" class="related-link-case"><div class="title-block"><span class="more-col">Bekijk alle cases</span></div></a>
 		      </div>
 				{% endfor %}
 	    </aside>

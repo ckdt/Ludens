@@ -71,6 +71,7 @@ $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=
 //page links
 $data['blog_link'] = get_page_link(108);
 $data['cases_link'] = get_page_link(104);
+$data['programma_link'] = get_page_link(100);
 
 if ( post_password_required( $post->ID ) ) {
 	Timber::render( 'single-password.twig', $data );

@@ -30,7 +30,10 @@
 					<div class="col-md-6 col-xs-12 about-text">
 				{% else %}
 					<div class="col-md-4 col-xs-12 about-text">
-					<div id="map-canvas"></div>
+					{% if loop.last %}
+						<p>WHERE TO FIND US</p>
+						<div id="map-canvas"></div>
+					{% endif %}
 				{% endif %}
 					{{col.column}}
 				</div><!-- end column -->

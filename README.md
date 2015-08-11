@@ -6,3 +6,4 @@
 **07/08/2015** - Selected class now added to selected personin about
 **09/08/2015** - blog & cases have now pagination!
 **10/08/2015** - blogpost single implemented, google maps, contact form styled
+**11/08/2015** - Single -case,-programma links added

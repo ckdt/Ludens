@@ -10600,8 +10600,8 @@ span.wpcf7-form-control-wrap input, span.wpcf7-form-control-wrap textarea {
 /*-----------MAP--------------*/
 /* line 1444, sass/custom-style.scss */
 #map-canvas {
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 100%;
 }
 
 /*-----------CONTACT 7--------------*/
