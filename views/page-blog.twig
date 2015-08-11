@@ -2,25 +2,26 @@
 
 {% block content %}
 
-
 	<!--Blog-->
 	<div class="container blog-con">
 		<!--featured post -->
 		<div class="row blog-head">
 			{% if posts %}
-				{% for post in posts|slice(0,1) %}
-		      <div class="col-lg-12 featured-blogpost">
-		        <div class="featured-blogpost-img">
-		          <img src="{{post.thumbnail.src('medium')}}"/>
-		        </div>
-		        <div class="featured-blogpost-content">
-		          <a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a><a class="category">categorie</a>
-		          <a href="{{post.permalink}}"><h1>{{post.title}}</h1></a>
-		          <p>{{post.get_preview(35,false,'',true)}}</p>
-		          <a href="{{post.permalink}}" class="button blue-open">lees meer</a>
-		        </div>
-		      </div>
-				{% endfor %}
+				{% if current_page == 0 %}
+					{% for post in posts|slice(0,1) %}
+			      <div class="col-lg-12 featured-blogpost">
+			        <div class="featured-blogpost-img">
+			          <img src="{{post.thumbnail.src('medium')}}"/>
+			        </div>
+			        <div class="featured-blogpost-content">
+			          <a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a><a class="category">categorie</a>
+			          <a href="{{post.permalink}}"><h1>{{post.title}}</h1></a>
+			          <p>{{post.get_preview(35,false,'',true)}}</p>
+			          <a href="{{post.permalink}}" class="button blue-open">lees meer</a>
+			        </div>
+			      </div>
+					{% endfor %}
+				{% endif %}
 			{% endif %}
 
       <div class="col-lg-12"><span class="title text-white">RECENTE BLOG BERICHTEN</span></div>
@@ -28,24 +29,33 @@
 
 		<div class="blog-container">
 			{% if posts %}
-				{% for post in posts|slice(1) %}
+				{% for post in posts %}
 					<div class="item-blog">
-						<div class="blog-img">
-							<a href="{{post.permalink}}">
-								<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
-							</a>
-						</div>
-						<div class="blog-box">
-							<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
-							<a class="category">
-								{% for term in post.terms %}
-									{{term.name}}
-								{% endfor %}
-							</a>
-							<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
-							<p>{{post.get_preview(40,false,'',true)}}</p>
-							<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
-						</div>
+						{% if post.post_type == 'post' %}
+							<div class="blog-img">
+								<a href="{{post.permalink}}">
+									<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
+								</a>
+							</div>
+							<div class="blog-box">
+								<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
+								<a class="category">
+									{% for term in post.terms %}
+										{{term.name}}
+									{% endfor %}
+								</a>
+								<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
+								<p>{{post.get_preview(40,false,'',true)}}</p>
+								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
+							</div>
+						{% else %}
+							<div class="blog-tweet">
+								<span class="tijd-twitter">{{post.post_date_gmt|time_ago}}</span>
+								<p>{{post.post_title}}</p>
+								<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
+              	<span class="author">@ludenstalentontwikkeling</span>
+							</div>
+						{% endif %}
 					</div><!--end blog-item-->
 				{% endfor %}
 			{% endif %}

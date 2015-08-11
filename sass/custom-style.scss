@@ -923,6 +923,7 @@ a.social{
     color:$white;
     text-align: center;
     line-height:1.4;
+    @include vertical-align;
   }
   img{
     position: absolute;
