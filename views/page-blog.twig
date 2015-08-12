@@ -91,7 +91,15 @@
 
 	<div class="container darkblue title-block-blog">
     <div class="row darkblue">
-      <div class="col-lg-12"><span class="volgende more-blog">VOLGENDE PAGINA</span></div>
+      <div class="col-lg-12">
+				{% if next_page <= pages %}
+					<a href="{{site.url}}/blog/page/{{next_page}}"><span class="volgende more-blog">VOLGENDE PAGINA</span></a>
+				{% endif %}
+
+				{% if current_page != 0 %}
+					<a href="{{site.url}}/blog/page/{{previous_page}}"><span class="vorige more-blog">VORIGE PAGINA</span></a>
+				{% endif %}
+			</div>
     </div>
   </div>
 

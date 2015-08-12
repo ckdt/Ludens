@@ -39,7 +39,6 @@ if (is_front_page()){
 
 	// Blog
 	$data['posts'] = Timber::get_posts('post_type=post&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=2');
-	var_dump(get_posts('post_type=tweet'));
 
 	array_unshift($templates, 'home.twig');
 }

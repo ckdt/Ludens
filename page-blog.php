@@ -25,15 +25,24 @@ $blog_items = array(
 	'posts_per_page'=> 3,
 	'status' => 'publish',
 	'order' => 'DESC',
-	//'orderby' => 'rand'
 );
 $data['posts'] = Timber::get_posts($blog_items);//get normal posts
 $data['tweets'] = Timber::get_posts('post_type=tweet');//get tweets
 
 $data['current_page'] = get_query_var('paged');
 
-$data['next_page'] = get_next_posts_link();
-echo get_query_var('paged');
+
+$data['pages'] = ceil(wp_count_posts( 'post' )->publish / 3);
+//get next page
+if(get_query_var('paged') == 0){
+		$data['next_page'] = get_query_var('paged') + 2;
+	} else {
+		$data['next_page'] = get_query_var('paged') + 1;
+}
+
+//get previous page
+$data['previous_page'] = get_query_var('paged') - 1;
+
 
 
 // Quote's

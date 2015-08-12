@@ -149,11 +149,14 @@ span.more-blog{
     opacity:0.4;
     letter-spacing: 1px;
     border-color:rgba(255,255,255,0.2);
-    width:100%;
+    line-height:5.5;
     display:inline-block;
 }
 span.volgende{
-  text-align: right;
+  float: right;
+}
+span.vorige{
+  float: left;
 }
 span.tijd{
   font-size:12px;
