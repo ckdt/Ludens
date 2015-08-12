@@ -27,7 +27,7 @@ $blog_items = array(
 	'posts_per_page'=> 6,
 	'status' => 'publish',
 	'order' => 'DESC',
-	'orderby' => 'rand'
+	//'orderby' => 'rand'
 );
 $data['posts'] = Timber::get_posts($blog_items);
 $data['current_page'] = get_query_var('paged');
