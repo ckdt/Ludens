@@ -29,6 +29,7 @@
 		<div class="blog-container">
 			{% if posts %}
 				{% for key,post in posts %}
+					{% if loop.index0 is even %}
 					<div class="item-blog">
 							<div class="blog-img">
 								<a href="{{post.permalink}}">
@@ -55,10 +56,44 @@
 								</div>
 							{% endif %}
 					</div><!--end blog-item-->
+					{% else %}
+					<div class="item-blog">
+						{% if tweets%}
+							<div class="blog-tweet">
+								<span class="tijd-twitter">{{tweets[key].post_date_gmt|time_ago}}</span>
+								<p>{{tweets[key].post_title}}</p>
+								<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
+								<span class="author">@ludenstalentontwikkeling</span>
+							</div>
+						{% endif %}
+						<div class="blog-img">
+							<a href="{{post.permalink}}">
+								<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
+							</a>
+						</div>
+						<div class="blog-box">
+							<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
+							<a class="category">
+								{% for term in post.terms %}
+									{{term.name}}
+								{% endfor %}
+							</a>
+							<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
+							<p>{{post.get_preview(40,false,'',true)}}</p>
+							<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
+						</div>
+					</div>
+					{% endif %}
 				{% endfor %}
 			{% endif %}
 		</div><!--end blog-container-->
 	</div>
+
+	<div class="container darkblue title-block-blog">
+    <div class="row darkblue">
+      <div class="col-lg-12"><span class="volgende more-blog">VOLGENDE PAGINA</span></div>
+    </div>
+  </div>
 
 	<!--Quote-->
 	{% if quote %}
