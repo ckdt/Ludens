@@ -1,7 +1,6 @@
 {% extends "base.twig" %}
 
 {% block content %}
-
 	<!--Blog-->
 	<div class="container blog-con">
 		<!--featured post -->
@@ -29,9 +28,8 @@
 
 		<div class="blog-container">
 			{% if posts %}
-				{% for post in posts %}
+				{% for key,post in posts %}
 					<div class="item-blog">
-						{% if post.post_type == 'post' %}
 							<div class="blog-img">
 								<a href="{{post.permalink}}">
 									<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
@@ -48,14 +46,14 @@
 								<p>{{post.get_preview(40,false,'',true)}}</p>
 								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
 							</div>
-						{% else %}
-							<div class="blog-tweet">
-								<span class="tijd-twitter">{{post.post_date_gmt|time_ago}}</span>
-								<p>{{post.post_title}}</p>
-								<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
-              	<span class="author">@ludenstalentontwikkeling</span>
-							</div>
-						{% endif %}
+							{% if tweets%}
+								<div class="blog-tweet">
+									<span class="tijd-twitter">{{tweets[key].post_date_gmt|time_ago}}</span>
+									<p>{{tweets[key].post_title}}</p>
+									<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
+	              	<span class="author">@ludenstalentontwikkeling</span>
+								</div>
+							{% endif %}
 					</div><!--end blog-item-->
 				{% endfor %}
 			{% endif %}

@@ -22,7 +22,7 @@ $data['page'] = new TimberPost();
 //var_dump(get_posts(array('post_type'=> array('tweet','post'))));//
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $blog_items = array(
-	'post_type'=> array('tweet','post'),
+	'post_type'=> 'post',//array('tweet','post'),
 	'paged' => $paged,
 	'posts_per_page'=> 6,
 	'status' => 'publish',
@@ -30,7 +30,15 @@ $blog_items = array(
 	//'orderby' => 'rand'
 );
 $data['posts'] = Timber::get_posts($blog_items);
+
 $data['current_page'] = get_query_var('paged');
+
+
+
+
+$data['tweets'] = Timber::get_posts('post_type=tweet');
+
+
 
 
 // Quote's
