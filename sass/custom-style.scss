@@ -118,7 +118,7 @@ span.col-title{
     text-transform: uppercase;
     letter-spacing: 1px;
     display:block;
-    width:376px;
+    width:100%;
     margin:0 auto 20px;
 }
 span.col-title-blog{
@@ -128,7 +128,7 @@ span.col-title-blog{
     text-transform: uppercase;
     letter-spacing: 1px;
     display:block;
-    width:100%;//376px;
+    width:100%;
     margin:20px 0;
 }
 span.more{
@@ -399,10 +399,7 @@ a{
     position:relative;
     @include ease-in-fast;
     i{
-      background-size:17px 17px;
       display:block;
-      height:17px;
-      width:17px;
       position:absolute;
       background-repeat:no-repeat;
       top:9px;
@@ -410,16 +407,25 @@ a{
       //@include ease-in-fast;
       &.email{
         background-image:url('img/email-icon.svg');
+        background-size:17px 13px;
+        height:13px;
+        width:17px;
         @include ease-in-fast;
-        -webkit-backface-visibility: hidden;
       }
       &.linkedin{
         background-image:url('img/linkedin-icon.svg');
-        top:6px;
+        background-size:15px 15px;
+        height:15px;
+        width:15px;
+        top:7px;
         @include ease-in-fast;
       }
       &.twitter{
         background-image:url('img/twitter-icon-grey.svg');
+        background-size:17px 14px;
+        height:14px;
+        width:17px;
+        top:9px;
         @include ease-in-fast;
       }
     }
@@ -431,11 +437,10 @@ a{
       @include ease-in-fast;
     }
   }
-  &#email:hover{
+  &.media#email:hover{
     border:1px solid $red;
     i.email{
       background-image:url("img/email-icon-hover.svg");
-      background-size:17px 17px;
     }
     span{
       color:$red;
@@ -445,7 +450,6 @@ a{
     border:1px solid #3D54A7;
     i{
       background-image:url("img/linkedin-icon-hover.svg");
-      background-size:17px 17px;
     }
     span{
       color:#3D54A7;
@@ -454,8 +458,7 @@ a{
   &.media#twitter:hover{
     border:1px solid #1DADEB;
     i{
-      background:url("img/twitter-icon-hover.svg");
-      background-size:17px 17px;
+      background-image:url("img/twitter-icon-hover.svg");
     }
     span{
       color:#1DADEB;
@@ -527,6 +530,83 @@ a.social{
 .nav-con{
   background:#fff;
 }
+#myNavmenu{
+  width:270px;
+  background:#fff;
+  ul.navbar-nav{
+    height:auto;
+    margin:0px;
+    li{
+      height:50px;
+      border-bottom:1px solid #eeeeee;
+      margin:0px;
+      a{
+        line-height:initial;
+      }
+      a:focus{
+        background:none;
+      }
+    }
+    li.active{
+      border-top:0px;
+      border-right:4px solid $red;
+      padding:15px 19px;
+      background:#F1F1F1;
+      a{
+        color:#4A4A4A;
+      }
+    }
+  }
+}
+.mobile-i{
+  width:54px;
+  height:54px;
+  border-left:1px solid #eeeeee;
+  border-bottom:1px solid #eeeeee;
+  float:left;
+  i{
+    display:block;
+    &.tel{
+      background:url('img/icon-phone.svg');
+      background-size:16px 9px;
+      height:9px;
+      width:16px;
+      margin:22.5px auto;
+    }
+    &.map{
+      background:url('img/icon-map.svg');
+      background-size:9px 14px;
+      height:14px;
+      width:9px;
+      margin:20px auto;
+    }
+    &.facebook{
+      background:url('img/icon-facebook.svg');
+      background-size:7px 16px;
+      height:16px;
+      width:7px;
+      margin:19px auto;
+    }
+    &.linkedin{
+      background:url('img/icon-linkedin.svg');
+      background-size:14px 14px;
+      height:14px;
+      width:14px;
+      margin:20px auto;
+    }
+    &.twitter{
+      background:url('img/icon-twitter.svg');
+      background-size:16px 13px;
+      height:13px;
+      width:16px;
+      margin:20.5px auto;
+    }
+  }
+}
+.mobile-i:nth-of-type(1){
+  border-left:0px;
+  width:53px;
+}
 .navbar{
   border-radius: 0;
 }
@@ -564,10 +644,6 @@ a.social{
     &.active{
       padding:11px 0px 15px;
       border-top:4px solid $red;
-      /*box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
-      -webkit-box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
-      -moz-box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);
-      -o-box-shadow: inset 0px 1px 10px 0px rgba(0,0,0,0.10);*/
       a{
         color:red;
         background-color: none;
@@ -601,6 +677,14 @@ a.social{
   background-size:18px;
   margin:18px 15px;
 }
+.map-mobile{
+  @extend .phone-mobile;
+  background-image:url('img/map-pin.svg');
+  background-size:9px 14px;
+  margin:18px 20.5px;
+  width:9px;
+  height:14px;
+}
 .phone-icon{
   background-image:url('img/phone.svg');
   display:block;
@@ -620,12 +704,27 @@ a.social{
 }
 .mobile-nav{
   background:#fff;
+  a.mobile-icon{
+    background:#fff;
+  }
+}
+.mobile-nav-home{
+  background:none;
+  position: absolute;
+  a.mobile-icon:nth-of-type(3){
+    border-left:0px;
+  }
+  a.mobile-icon{
+    background:rgba(0,0,0,0.2);
+    border-color:rgba(0,0,0,0.1);
+  }
 }
 .mobile-icon{
   width:50px;
   height:50px;
   float:right;
   border-left:1px solid #ccc;
+  background:#eeeeee;
 }
 .header{
   height:90px;
@@ -1060,7 +1159,7 @@ a.social{
   background:$darkblue;
 }
 .footer{
-  height:340px;
+  min-height:340px;
   background:$darkblue;
   padding-top:65px;
   color: rgba(255, 255, 255,0.8);
@@ -1439,10 +1538,12 @@ a:hover.related-link-prog div.title-block
     width:100%;
     img{
       height:100%;
-      width:auto;
       position: absolute;
-      left:50%;
-      margin-left:-770px;
+      top: -9999px;
+      bottom: -9999px;
+      left: -9999px;
+      right: -9999px;
+      margin: auto;
     }
   }
 }
@@ -1888,6 +1989,9 @@ body,
   .information{
     width:385px;
   }
+  .case{
+    height:250px;
+  }
 }
 
 // 991px and UP -------------------------------------
@@ -1978,6 +2082,9 @@ body,
       height:2px;
       margin-top:6px;
     }
+  }
+  .navbar-toggle:focus,.navbar-toggle:visited,.navbar-toggle:hover{
+    background:$red !important;
   }
   .row{
     padding-left:0px !important;
@@ -2132,7 +2239,7 @@ body,
   .profile{
     height:auto;
     overflow:auto;
-    margin-bottom:120px;
+    //margin-bottom:0px;
     margin-top:20px;
   }
   .profile-img{
@@ -2142,7 +2249,7 @@ body,
     float:initial;
   }
   .information{
-    padding:0 20px;
+    padding:0px;
     width:100%;
     h1{
       font-size:30px;
@@ -2163,6 +2270,9 @@ body,
   }
   .programma-infobox{
     margin:20px 0;
+  }
+  .case-img h1{
+    font-size:30px;
   }
 }
 //BETWEEN 767px - 600px ----------------------------
@@ -2191,5 +2301,9 @@ body,
       width:320px;
       height:auto;
     }
+  }
+  .case{
+    height:300px;
+    padding:35px 20px;
   }
 }

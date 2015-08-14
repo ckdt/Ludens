@@ -38,7 +38,15 @@ if (is_front_page()){
 	$data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');
 
 	// Blog
-	$data['posts'] = Timber::get_posts('post_type=post&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=2');
+	$blog_items = array(
+		'post_type'=> 'post',
+		'paged' => $paged,
+		'posts_per_page'=> 3,
+		'status' => 'publish',
+		'order' => 'DESC',
+	);
+	$data['posts'] = Timber::get_posts($blog_items);//get normal posts
+	$data['tweets'] = Timber::get_posts('post_type=tweet');//get tweets
 
 	array_unshift($templates, 'home.twig');
 }

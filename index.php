@@ -14,6 +14,7 @@ $data = Timber::get_context();
 $data['posts'] = Timber::get_posts();
 $data['class'] = 'nav-con-home';
 
+
 $templates = array( 'index.twig' );
 if( is_home() ){
 	array_unshift( $templates, 'home.twig' );

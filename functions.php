@@ -183,6 +183,7 @@ class StarterSite extends TimberSite {
 			$context['nav_container_class'] = 'nav-con-home';
 			$context['header_home'] = 'header-home';
 			$context['nav_home'] = 'home-nav';
+			$context['mobile_nav_home'] = 'mobile-nav-home';
 			$context['logo_home'] = 'logo-home.svg';
 			$context['phone_class'] = 'phone-icon';
 			$context['phone_num_class'] = 'tel-num text-white';
@@ -190,6 +191,7 @@ class StarterSite extends TimberSite {
 			$context['nav_container_class'] = 'nav-con';
 			$context['header_home'] = 'header';
 			$context['logo_home'] = 'logo-color.svg';
+			$context['mobile_nav_home'] = 'mobile-nav';
 			$context['phone_class'] = 'phone-icon-grey';
 			$context['phone_num_class'] = 'tel-num';
 		}

@@ -30,7 +30,7 @@
 			</div>
 
 			<aside class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 about-text">
-	      <span class="col-title">GERELATEERDE Programma</span>
+	      {% if post_related %}<span class="col-title">GERELATEERDE Programma</span>{% endif %}
         {% for rel in post_related %}
 		      <div class="related">
 		        <div class="related-img">

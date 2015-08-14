@@ -87,6 +87,13 @@
         name: 'Custom Style'
       };
 
+      var image = '../wp-content/themes/ludens/img/pin.svg';
+      var beachMarker = new google.maps.Marker({
+         position: {lat: 51.927630, lng: 4.478093},
+         map: map,
+         icon: image
+       });
+
       var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
 
       map.mapTypes.set(MAP_ID, customMapType);

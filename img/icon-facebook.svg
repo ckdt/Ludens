@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="8px" height="16px" viewBox="0 0 8 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>facebook-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ludens---Mobiel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="00-mobiel-homepage" sketch:type="MSArtboardGroup" transform="translate(-182.000000, -304.000000)" fill="#000000">
+            <g id="mob-menu" sketch:type="MSLayerGroup" transform="translate(48.000000, 287.000000)">
+                <g id="facebook" transform="translate(110.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <path d="M24,22.2307573 L24,24.9657476 L25.6754951,24.9657476 L25.6754951,33 L28.8974369,33 L28.8974369,24.9315728 L31.1452816,24.9315728 L31.3845825,22.2307573 L28.8974369,22.2307573 L28.8974369,20.6923107 C28.8974369,20.0554951 29.0256699,19.8033786 29.6410097,19.8033786 L31.3845437,19.8033786 L31.3845437,17 L29.1538252,17 C26.7563883,17 25.6754951,18.0554951 25.6754951,20.076932 L25.6754951,22.2307573 L24,22.2307573 Z" id="facebook-icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
