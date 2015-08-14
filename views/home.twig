@@ -69,7 +69,7 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 case-box">
 						<a href="{{case.permalink}}">
 							<div class="case-img">
-								<img src="{{case.thumbnail.src('medium')}}" alt="{{case.thumbnail.title}}">
+								<a href="{{case.permalink}}"><div class="img" style="background-image:url('{{case.thumbnail.src('medium')}}')"></div></a>
 								<h1>{{case.title}}</h1>
 							</div>
 						</a>
@@ -119,6 +119,9 @@
 						{% endfor %}
 					{% endif %}
 				</div><!--end carousel-inner-->
+				<!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel2" data-slide="prev"></a>
+        <a class="carousel-control right" href="#carousel2" data-slide="next"></a>
 			</div>
 		</div>
 	</div>
@@ -168,7 +171,7 @@
 	</div>
 	<div class="container darkblue title-block-blog">
     <div class="row darkblue">
-      <div class="col-lg-12"><span class="more-blog">Ga naar ons blog</span></div>
+      <div class="col-lg-12"><a href="{{blog_link}}"><span class="more-blog">Ga naar ons blog</span></a></div>
     </div>
   </div>
 

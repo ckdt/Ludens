@@ -10,7 +10,7 @@
 					{% for post in posts|slice(0,1) %}
 			      <div class="col-lg-12 featured-blogpost">
 			        <div class="featured-blogpost-img">
-			          <img src="{{post.thumbnail.src('medium')}}"/>
+								<div class="img" style="background-image:url('{{post.thumbnail.src('medium')}}')"></div>
 			        </div>
 			        <div class="featured-blogpost-content">
 			          <a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a><a class="category">categorie</a>
@@ -33,7 +33,7 @@
 					<div class="item-blog">
 							<div class="blog-img">
 								<a href="{{post.permalink}}">
-									<img src="{{post.thumbnail.src('medium')}}" alt="{{post.thumbnail.title}}">
+									<div class="img" style="background-image:url('{{post.thumbnail.src('medium')}}')"></div>
 								</a>
 							</div>
 							<div class="blog-box">
@@ -95,7 +95,6 @@
 				{% if next_page <= pages %}
 					<a href="{{site.url}}/blog/page/{{next_page}}"><span class="volgende more-blog">VOLGENDE PAGINA</span></a>
 				{% endif %}
-
 				{% if current_page != 0 %}
 					<a href="{{site.url}}/blog/page/{{previous_page}}"><span class="vorige more-blog">VORIGE PAGINA</span></a>
 				{% endif %}

@@ -75,6 +75,11 @@ transition: all 0.25s ease-in-out;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+@mixin cover{
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
 span{
   &.more-col{
     @include titillum;
@@ -84,6 +89,7 @@ span{
     text-transform: uppercase;
     letter-spacing: 1px;
     padding:0 30px;
+    @include ease-in-fast;
   }
 }
 span.title{
@@ -127,6 +133,7 @@ span.col-title-blog{
 }
 span.more{
     @include titillum;
+    @include ease-in-fast;
     font-weight:bold;
     font-size:12px;
     color:#37424A;
@@ -134,14 +141,17 @@ span.more{
     //opacity:0.4;
     letter-spacing: 1px;
     a{
+      @include ease-in-fast;
       color:#9B9B9B;
     }
     a:hover{
+      @include ease-in-fast;
       color:$red;
     }
 }
 span.more-blog{
     @include titillum;
+    @include ease-in-fast;
     font-weight:bold;
     font-size:12px;
     color:#AEB6BB;
@@ -151,6 +161,11 @@ span.more-blog{
     border-color:rgba(255,255,255,0.2);
     line-height:5.5;
     display:inline-block;
+}
+span.more-blog:hover{
+  @include ease-in-fast;
+  color:#fff;
+  opacity: 0.8;
 }
 span.volgende{
   float: right;
@@ -217,6 +232,8 @@ h6{
   color:$blue;
   line-height: 1.5;
   display: inline-block;
+
+  margin-bottom:25px;
 }
 h6.red{
   color:$red !important;
@@ -238,6 +255,15 @@ blockquote{
   position: absolute;
   top:0px;
   width:640px;
+}
+.img{
+  height:100%;
+  width:100%;
+  @include cover;
+  @include scale-out;
+}
+.img:hover{
+  @include scale;
 }
 .intro{
   a{
@@ -278,7 +304,7 @@ blockquote{
   width:341px;
 }
 .intro-con{
-  position: absolute;
+  height:0px;
 }
 .programma{
   font-size:16px;
@@ -371,8 +397,8 @@ a{
     color:#9B9B9B;
     font-weight:600;
     position:relative;
+    @include ease-in-fast;
     i{
-      //background-image:url('../img/email-icon.svg');
       background-size:17px 17px;
       display:block;
       height:17px;
@@ -381,15 +407,20 @@ a{
       background-repeat:no-repeat;
       top:9px;
       left:13px;
+      //@include ease-in-fast;
       &.email{
         background-image:url('img/email-icon.svg');
+        @include ease-in-fast;
+        -webkit-backface-visibility: hidden;
       }
       &.linkedin{
         background-image:url('img/linkedin-icon.svg');
         top:6px;
+        @include ease-in-fast;
       }
       &.twitter{
         background-image:url('img/twitter-icon-grey.svg');
+        @include ease-in-fast;
       }
     }
     span{
@@ -397,6 +428,37 @@ a{
       position: absolute;
       left:40px;
       top:5px;
+      @include ease-in-fast;
+    }
+  }
+  &#email:hover{
+    border:1px solid $red;
+    i.email{
+      background-image:url("img/email-icon-hover.svg");
+      background-size:17px 17px;
+    }
+    span{
+      color:$red;
+    }
+  }
+  &.media#linkedin:hover{
+    border:1px solid #3D54A7;
+    i{
+      background-image:url("img/linkedin-icon-hover.svg");
+      background-size:17px 17px;
+    }
+    span{
+      color:#3D54A7;
+    }
+  }
+  &.media#twitter:hover{
+    border:1px solid #1DADEB;
+    i{
+      background:url("img/twitter-icon-hover.svg");
+      background-size:17px 17px;
+    }
+    span{
+      color:#1DADEB;
     }
   }
 }
@@ -459,6 +521,7 @@ a.social{
 }
 .nav-con-home{
   position: absolute;
+  width:100%;
   z-index: 1;
 }
 .nav-con{
@@ -1016,10 +1079,10 @@ a.social{
     color:rgba(255, 255, 255, 0.5);
     a{
       color:rgba(255, 255, 255, 0.5);
+      @include ease-in-fast;
     }
     a:hover{
       color:#fff;
-      @include ease-in;
     }
   }
 }
@@ -1047,6 +1110,7 @@ a.social{
   height:260px;
   padding:0 !important;
   position: relative;
+  overflow:hidden;
   div.row{
     padding:0 !important;
     width:100%;
@@ -1059,7 +1123,6 @@ a.social{
   }
 }
 .pagetitle-con{
-  position: absolute;
 }
 .page-title{
   position:absolute;
@@ -1106,6 +1169,9 @@ a.social{
   margin-right:0;
   margin-left:-1px;
   color:#4A4A4A;
+}
+.nav-tabs li a:hover{
+  border:1px solid #ddd;
 }
 .nav-tabs li:first-child a{
   z-index:2;
@@ -1160,6 +1226,9 @@ a.social{
     position: absolute;
     margin:0;
     top:305px;
+    a{
+      @include ease-in-fast;
+    }
   }
   p{
     position: absolute;
@@ -1227,7 +1296,7 @@ a.social{
 }
 .related:hover{
   .related-img{
-    img{
+    div.img{
       @include scale;
     }
   }
@@ -1239,9 +1308,14 @@ a.social{
 .related-img{
   height:221px;
   width:100%;
-  background:$grey;
   position: relative;
   overflow:hidden;
+  div.img{
+    height:100%;
+    width:100%;
+    @include cover;
+    @include scale-out;
+  }
   span{
     font-size:24px;
     font-weight: bold;
@@ -1249,14 +1323,6 @@ a.social{
     color:$white;
     left:30px;
     bottom:20px;
-  }
-  img{
-    min-width:100%;
-    min-height:100%;
-    position: absolute;
-    left:50%;
-    margin-left:-50%;
-    @include scale-out;
   }
 }
 .related-content{
@@ -1290,6 +1356,7 @@ a:hover.related-link-case div.title-block span.more-col{
 }
 a.first div.title-block{
   border-bottom:0;
+  @include ease-in-fast;
 }
 a:hover.related-link-case div.title-block,
 a:hover.related-link-prog div.title-block
@@ -1297,7 +1364,7 @@ a:hover.related-link-prog div.title-block
   background:#F7F7F7;
 }
 .cases-intro{
-  padding:40px 0;
+  padding:60px 0;
 }
 .cases-all{
   background:#F2F2F2;
@@ -1311,10 +1378,13 @@ a:hover.related-link-prog div.title-block
       color:#9B9B9B;
     }
   }
-  a:hover div.title-block{
-    span.more-col{
-      color:$red;
-    }
+  a div.title-block span.more-col{
+    @include ease-in-fast;
+  }
+}
+.cases-all .related:hover{
+  a div.title-block span.more-col{
+    color:$red;
   }
 }
 .blog-container{
@@ -1461,6 +1531,9 @@ input.wpcf7-submit:hover{
 }
 
 /*-----------SLIDER--------------*/
+#carousel{
+  background:#006278;
+}
 .transition-timer-carousel-progress-bar {
   height: 3px;
   background-color: #016A80;
@@ -1875,11 +1948,12 @@ body,
   }
   .case-box{
     margin-bottom:70px;
-    padding-left:0px;
-    padding-right:0px;
   }
   .cases-home{
     height:1450px;
+  }
+  .case-img{
+    height:240px;
   }
   .navbar-header{
     padding:0;
@@ -1896,7 +1970,7 @@ body,
     border:0;
     height:50px;
     width:50px;
-    background:#983333;
+    background:$red;
     padding:4px 13px 10px;
     .icon-bar{
       border-radius:0;
@@ -1910,8 +1984,6 @@ body,
     padding-right:0px !important;
   }
   .row.cases-home{
-    padding-left:0px !important;
-    padding-right:0px !important;
   }
   .footer{
     height:inherit;
@@ -1952,6 +2024,9 @@ body,
   .blog-tweet{
     width:280px;
   }
+  .blog-box a.blog-title{
+    line-height:1.25;
+  }
   .intro-text{
     font-size:18px;
     width:300px;
@@ -1959,6 +2034,9 @@ body,
   }
   .intro a{
     top:285px;
+  }
+  .quote-font{
+    font-size:26px;
   }
   .slide-home{
     height:257px;
@@ -2055,15 +2133,36 @@ body,
     height:auto;
     overflow:auto;
     margin-bottom:120px;
+    margin-top:20px;
   }
   .profile-img{
     width:280px;
-    margin:0 auto;
+    height:280px;
+    margin:0 auto 30px;
     float:initial;
   }
   .information{
     padding:0 20px;
     width:100%;
+    h1{
+      font-size:30px;
+    }
+  }
+  .nav-tabs{
+    border-bottom:1px;
+  }
+  .nav-tabs li,.nav-tabs li.active{
+    width:100%;
+    a{
+      border:1px solid #ddd;
+      border-bottom:1px solid #ddd;
+    }
+  }
+  .programma-infobox:first-child{
+    margin-top:40px;
+  }
+  .programma-infobox{
+    margin:20px 0;
   }
 }
 //BETWEEN 767px - 600px ----------------------------
@@ -2077,10 +2176,6 @@ body,
 
 //321px AND UNDER (small phones)
 @media only screen and (max-width: 321px){
-  .case-box{
-    padding-left:0px;
-    padding-right:0px;
-  }
   .row.cases-home{
     padding-left:0px !important;
     padding-right:0px !important;

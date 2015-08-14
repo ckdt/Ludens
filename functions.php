@@ -202,6 +202,12 @@ class StarterSite extends TimberSite {
 		$context['menu_footer'] = new TimberMenu(8);
 		$context['menu_social'] = new TimberMenu(12);
 		$context['site'] = $this;
+
+		//page links
+		$context['blog_link'] = get_page_link(108);
+		$context['cases_link'] = get_page_link(104);
+		$context['programma_link'] = get_page_link(100);
+		$context['about_link'] = get_page_link(13);
 		return $context;
 	}
 

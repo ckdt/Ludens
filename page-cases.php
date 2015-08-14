@@ -25,8 +25,8 @@ $args = array(
 	'post_status' => 'publish',
 	'orderby' => 'menu_order',
 	'order' => 'DESC',
-	'posts_per_page' => 3,
-	'paged' => $paged,
+	//'posts_per_page' => 3,
+	//'paged' => $paged,
 	'ignore_sticky_posts' => 1,
 );
 $cases = query_posts($args);

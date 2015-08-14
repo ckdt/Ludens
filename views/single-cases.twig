@@ -34,7 +34,7 @@
         {% for rel in post_related %}
 		      <div class="related">
 		        <div class="related-img">
-		          <a href="{{rel.permalink}}"><img src="{{rel.thumbnail.src('medium')}}" alt="{{rel.thumbnail.title}}"/></a>
+		          <a href="{{rel.permalink}}"><div class="img" style="background-image:url('{{rel.thumbnail.src('medium')}}')"></div></a>
 		          <a><span>{{rel.title}}</span></a>
 		        </div>
 		        <div class="related-content">
