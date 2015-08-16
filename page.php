@@ -28,11 +28,10 @@ if (is_front_page()){
 	$data['programma_items'] = Timber::get_posts('post_type=programmas&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
 
 	// Cases
-	$data['case_items'] = Timber::get_posts('post_type=cases&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
+	$data['case_items'] = Timber::get_posts('post_type=cases&post_status=publish&order=DESC&posts_per_page=3');
 
 	// Klanten
 	$data['client_items'] = Timber::get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC');
-	//var_dump(get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC'));
 
 	// Quote's
 	$data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');

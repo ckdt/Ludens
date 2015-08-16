@@ -1,14 +1,17 @@
 {% extends "base.twig" %}
 
 {% block content %}
+
 	<!--Header-->
-	{% if page.thumbnail %}
-		<div class="container pagehead-con">
-			<div class="row">
-			 <img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
-			</div>
+	<div class="container pagehead-con">
+		<div class="row">
+			{% if page.thumbnail %}
+		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+			{% else %}
+			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
+			{% endif %}
 		</div>
-	{% endif %}
+	</div>
 
 	<!--pagehead title and description-->
 	<div class="container pagetitle-con">

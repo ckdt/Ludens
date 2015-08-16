@@ -276,6 +276,7 @@ blockquote{
     padding:10px 25px;
     width:165px;
     border: 1px solid rgba(255,255,255,0.2);
+    @include ease-in-fast;
 
     @include border-radius(4px);
     font-weight:bold;
@@ -284,6 +285,9 @@ blockquote{
     padding:10px 30px;
     letter-spacing: 1px;
     display:inline-block;
+  }
+  a:hover{
+    background:#008DAB;
   }
   position: absolute;
   left:20px;
@@ -369,6 +373,11 @@ a{
     &.blue-open{
       color:$blue;
       border-color:$blue;
+      @include ease-in-fast;
+    }
+    &.blue-open:hover{
+      color:#fff;
+      background:$blue;
     }
     &.blue-button{
       color:#fff;
@@ -1029,6 +1038,7 @@ a.social{
 }
 .blog-con{
   background:$darkblue;
+  padding-top:50px;
 }
 .blog{
   height:120px;
@@ -1149,11 +1159,15 @@ a.social{
 .klant-logo{
   height:100%;
   @include blur-fix;
+  @include ease-in-fast;
   img{
     display:block;
     margin:0 auto;
     @include vertical-align;
   }
+}
+.klant-logo:hover{
+  opacity:0.6;
 }
 .footer-con{
   background:$darkblue;
@@ -1496,7 +1510,6 @@ a:hover.related-link-prog div.title-block
 }
 .featured-blogpost{
   height:460px;
-  margin-top:50px;
   margin-bottom:70px;
 }
 .featured-blogpost-img{
@@ -1537,7 +1550,7 @@ a:hover.related-link-prog div.title-block
     padding:0 !important;
     width:100%;
     img{
-      height:100%;
+      width:100%;
       position: absolute;
       top: -9999px;
       bottom: -9999px;
@@ -1710,6 +1723,7 @@ input.wpcf7-submit:hover{
     text-shadow: none;
     &.left,&.right{
       background-image: none;
+      width:7%;
     }
   }
 }
