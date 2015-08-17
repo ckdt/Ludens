@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.2 (12043) - http://www.bohemiancoding.com/sketch -->
+    <title>linkedin-circle-outline-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ludens---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="01b.-over-ons-team-detail" sketch:type="MSArtboardGroup" transform="translate(-652.000000, -520.000000)" fill="#ADADAD">
+            <g id="team-member" sketch:type="MSLayerGroup" transform="translate(120.000000, 190.000000)">
+                <g id="content" transform="translate(412.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <g id="links" transform="translate(0.000000, 320.000000)">
+                        <g id="Dynamic-group" transform="translate(106.000000, 0.000000)">
+                            <g id="8:14:8:14" transform="translate(14.000000, 8.000000)">
+                                <path d="M3.53141748,3.78003883 C3.53141748,4.7631068 2.74081553,5.56007767 1.76574757,5.56007767 C0.790524272,5.56007767 0,4.7631068 0,3.78003883 C0,2.7968932 0.790601942,2 1.76574757,2 C2.7408932,2 3.53141748,2.7968932 3.53141748,3.78003883 L3.53141748,3.78003883 Z M3.27293204,6.82345631 L0.287067961,6.82345631 L0.287067961,16.4704466 L3.27293204,16.4704466 L3.27293204,6.82345631 L3.27293204,6.82345631 Z M8.04613592,6.82345631 L5.18221359,6.82345631 L5.18221359,16.4704466 L8.04613592,16.4704466 L8.04613592,11.4065243 C8.04613592,10.0498641 8.67060194,9.24240777 9.86578641,9.24240777 C10.9640388,9.24240777 11.4915728,10.0177087 11.4915728,11.4065243 L11.4915728,16.4704466 L14.4631456,16.4704466 L14.4631456,10.3620194 C14.4631456,7.77809709 12.998835,6.52908738 10.9532427,6.52908738 C8.90765049,6.52908738 8.04621359,8.12264078 8.04621359,8.12264078 L8.04621359,6.82345631 L8.04613592,6.82345631 Z" id="linkedin-circle-outline-icon"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

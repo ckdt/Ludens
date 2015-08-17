@@ -1,74 +1,63 @@
 <!-- Sitemap -->
-<strong>Sitemap</strong>
-
-<nav id="nav-sitemap" class="nav-sitemap" role="navigation">
-	<ul class="nav">
-	{% for item in menu_main.get_items %}
-		<li class="nav-item {{item.classes | join(' ')}}">
-			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-			{% if item.get_children %}
-				<ul class="nav nav-drop">
-				{% for child in item.get_children %}
-					<li class="nav-drop-item">
-						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
+<!--Footer-->
+<div class="row footer">
+	<div class="col-lg-2 col-sm-6 col-xs-12">
+	  <span class="title">sitemap</span>
+	    <ul class="footer-list">
+				{% for item in menu_main.get_items %}
+					<li class="{{item.classes | join(' ')}}">
+						<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
 					</li>
 				{% endfor %}
-				</ul>
-			{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
-</nav>
+		</ul>
+	</div>
 
-<!-- Services -->
-<strong>Onze Diensten</strong>
+	<!-- Services -->
+	<div class="col-lg-2 col-sm-6 col-xs-12">
+	  <span class="title">onze diensten</span>
+	  <ul class="footer-list">
+			{% for item in menu_footer.get_items %}
+				<li class="nav-item {{item.classes | join(' ')}}">
+					<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
 
-<nav id="nav-services" class="nav-services" role="navigation">
-	<ul class="nav">
-	{% for item in menu_footer.get_items %}
-		<li class="nav-item {{item.classes | join(' ')}}">
-			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-			{% if item.get_children %}
-				<ul class="nav nav-drop">
-				{% for child in item.get_children %}
-					<li class="nav-drop-item">
-						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
-</nav>
+	<!-- Social -->
+	<div class="col-lg-2 col-sm-6 col-xs-12">
+	  <span class="title">volg ons</span>
+	  <ul class="footer-list">
+		{% for item in menu_social.get_items %}
+			<li class="nav-item {{item.classes | join(' ')}}">
+				<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
 
-<!-- Social -->
-<strong>Volg Ons</strong>
+	<!--contact gegevens -->
+	<div class="col-lg-2 col-sm-6 col-xs-12">
+	  <span class="title">contact</span>
+	  <ul class="footer-list">
+			<li>Koetshuis Den Dolder</li>
+	    <li>Landgoed Ewijkshoeve</li>
+	    <li>Soestdijkerweg 12a</li>
+	    <li>3734 MH Den Dolder</li>
+	  </ul>
+	</div>
 
-<nav id="nav-social" class="nav-social" role="navigation">
-	<ul class="nav">
-	{% for item in menu_social.get_items %}
-		<li class="nav-item {{item.classes | join(' ')}}">
-			<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
-			{% if item.get_children %}
-				<ul class="nav nav-drop">
-				{% for child in item.get_children %}
-					<li class="nav-drop-item">
-						<a class="nav-link" href="{{child.get_link}}">{{child.title}}</a>
-					</li>
-				{% endfor %}
-				</ul>
-			{% endif %}
-		</li>
-	{% endfor %}
-	</ul>
-</nav>
-
-Koetshuis Den Dolder Landgoed Ewijkshoeve Soestdijkerweg 12a 3734 MH Den Dolder
+	<div class="col-lg-2 col-sm-6 col-xs-12">
+	  <span class="footer-title opacity">menu</span>
+	  <ul class="footer-list">
+	    <li>info@ludenstraining.nl</li>
+	    <li>035-6668456</li>
+	  </ul>
+	</div>
+</div>
 
 
-info@ludenstraining.nl
-035-6668456
-
-
-&copy; {{"now"|date('Y')}} Ludens Talentontwikkeling 
+<!--copyright-->
+<div class="row copyright">
+  <div class="lg-col-12"><span class="copyright-text">&copy; {{"now"|date('Y')}} Ludens Talentontwikkeling</span></div>
+</div>

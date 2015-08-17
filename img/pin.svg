@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="23px" height="37px" viewBox="0 0 23 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>Pin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ludens---Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="05.-contact" sketch:type="MSArtboardGroup" transform="translate(-1097.000000, -538.000000)" fill="#008DAB">
+            <g id="col-3---snazzymaps" sketch:type="MSLayerGroup" transform="translate(944.000000, 407.000000)">
+                <path d="M160.005,140.795 C160.005,139.64 160.41,138.65 161.25,137.84 C162.075,137.015 163.05,136.595 164.205,136.595 C165.345,136.595 166.335,137.015 167.175,137.84 C168,138.65 168.42,139.64 168.42,140.795 C168.42,141.935 168,142.925 167.175,143.75 C166.335,144.59 165.345,144.98 164.205,144.98 C163.05,144.98 162.075,144.59 161.25,143.75 C160.41,142.925 160.005,141.935 160.005,140.795 L160.005,140.795 Z M156.3,134.06 C154.095,136.13 153,138.65 153,141.65 C153,143.855 154.26,147.635 156.825,153.02 C159.345,158.42 161.82,163.19 164.205,167.36 C165.54,164.96 166.95,162.335 168.45,159.47 C169.92,156.605 171.45,153.305 173.01,149.585 C174.585,145.85 175.38,143.21 175.38,141.65 C175.38,138.65 174.255,136.13 172.05,134.06 C169.845,132.02 167.22,131 164.205,131 C161.16,131 158.505,132.02 156.3,134.06 L156.3,134.06 Z" id="Pin" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

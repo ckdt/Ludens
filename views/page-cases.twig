@@ -1,0 +1,109 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!--Header-->
+	<div class="container pagehead-con">
+		<div class="row">
+			{% if page.thumbnail %}
+		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+			{% else %}
+			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
+			{% endif %}
+		</div>
+	</div>
+
+	<!--pagehead title and description-->
+	<div class="container pagetitle-con">
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="page-title">
+					<h1>{{ page.title }}</h1>
+					<p>{{page.get_field('subtitle')}}</p>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<!--Text-->
+	<div class="container white">
+  	<div class="row about-textbox">
+			{% for col in page.get_field('content_columns') %}
+				{% if loop.length == 1 or loop.length == 2 %}
+					<div class="col-md-6 col-xs-12 about-text">
+				{% else %}
+					<div class="col-md-4 col-xs-12 about-text">
+				{% endif %}
+					{{col.column}}
+				</div><!-- end column -->
+			{% endfor %}
+		</div>
+	</div>
+
+	<!--Cases-->
+	<div class="container cases-con">
+  	<div class="row cases-all">
+			<div class="col-lg-12"><span class="title">CASES</span></div>
+			{% for case in cases %}
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 about-text">
+					<div class="related">
+						<a href="{{case.permalink}}">
+              <div class="related-img">
+                <div class="img" style="background-image:url('{{case.thumbnail.src('medium')}}')"></div>
+								<span>{{case.post_title}}</span>
+              </div>
+            </a>
+						<div class="related-content">
+							{% for relation in case.get_field('related')|slice(0,1) %}
+								{% set rel_link = TimberPost(relation.ID) %}
+	              <span class="description"><a href="{{rel_link.permalink}}">{{relation.post_title}}</a></span>
+							{% endfor %}
+              <p>Schiphol Group is een world of opportunities. Er zijn zoveel verschillende disciplines, soorten afdelingen en werkzaamheden dat de interne mobiliteit heel interessant is. </p>
+						</div>
+						<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Lees meer</span></div></a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- client slider -->
+	<div class="container partners-con">
+    <div class="row partners">
+			<div class="col-lg-12"><span class="cases">ONZE KLANTEN</span></div>
+			<div id="carousel2" class="carousel slide carousel-fade" data-ride="carousel">
+				<ol class="carousel-indicators">
+					{% if client_items|length > 6 %}
+          <li data-target="#carousel2" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel2" data-slide-to="1"></li>
+					{% endif %}
+					{% if client_items|length > 12 %}
+          	<li data-target="#carousel2" data-slide-to="2"></li>
+					{% endif %}
+        </ol>
+				<div class="carousel-inner">
+					{% if client_items %}
+						{% for client_slide in client_items|batch(6) %}
+							{% if loop.first %}
+							<div class="active item">
+							{% else %}
+								<div class="item">
+							{% endif %}
+								{% for client in client_slide %}
+									<div class="col-lg-2 col-md-3 col-sm-3 klant-logo">
+										<img src="{{client.thumbnail.src('thumbnail')}}" alt="{{client.thumbnail.title}}"/>
+									</div>
+								{% endfor %}
+							</div>
+						{% endfor %}
+					{% endif %}
+				</div><!--end carousel-inner-->
+				<!-- Carousel nav -->
+        <a class="carousel-control left" href="#carousel2" data-slide="prev"></a>
+        <a class="carousel-control right" href="#carousel2" data-slide="next"></a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>linkedin-circle-outline-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Ludens---Mobiel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="00-mobiel-homepage" sketch:type="MSArtboardGroup" transform="translate(-233.000000, -305.000000)" fill="#000000">
+            <g id="mob-menu" sketch:type="MSLayerGroup" transform="translate(48.000000, 287.000000)">
+                <g id="linkedin" transform="translate(165.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <path d="M23.5314175,19.7800388 C23.5314175,20.7631068 22.7408155,21.5600777 21.7657476,21.5600777 C20.7905243,21.5600777 20,20.7631068 20,19.7800388 C20,18.7968932 20.7906019,18 21.7657476,18 C22.7408932,18 23.5314175,18.7968932 23.5314175,19.7800388 L23.5314175,19.7800388 Z M23.272932,22.8234563 L20.287068,22.8234563 L20.287068,32.4704466 L23.272932,32.4704466 L23.272932,22.8234563 L23.272932,22.8234563 Z M28.0461359,22.8234563 L25.1822136,22.8234563 L25.1822136,32.4704466 L28.0461359,32.4704466 L28.0461359,27.4065243 C28.0461359,26.0498641 28.6706019,25.2424078 29.8657864,25.2424078 C30.9640388,25.2424078 31.4915728,26.0177087 31.4915728,27.4065243 L31.4915728,32.4704466 L34.4631456,32.4704466 L34.4631456,26.3620194 C34.4631456,23.7780971 32.998835,22.5290874 30.9532427,22.5290874 C28.9076505,22.5290874 28.0462136,24.1226408 28.0462136,24.1226408 L28.0462136,22.8234563 L28.0461359,22.8234563 Z" id="linkedin-circle-outline-icon"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

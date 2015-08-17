@@ -93,7 +93,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes', 'editor'),
-			'rewrite' => array('slug' => _x('cases', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('case', 'URL slug', 'ludens'), 'with_front' => true)
 			)
 		);
 		register_post_type('team',
@@ -117,7 +117,7 @@ class StarterSite extends TimberSite {
 			'hierarchical' => true,
 			'has_archive' => false,
 			'supports' => array('title','thumbnail', 'page-attributes'),
-			'rewrite' => array('slug' => _x('over-ons', 'URL slug', 'ludens'), 'with_front' => false)
+			'rewrite' => array('slug' => _x('over-ons', 'URL slug', 'ludens'), 'with_front' => false),
 			)
 		);
 		register_post_type('quotes',
@@ -144,7 +144,7 @@ class StarterSite extends TimberSite {
 			'rewrite' => array('slug' => _x('quotes', 'URL slug', 'ludens'), 'with_front' => false)
 			)
 		);
-	
+
 
 	}
 
@@ -179,6 +179,24 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_context( $context ) {
+		if(is_front_page()){
+			$context['nav_container_class'] = 'nav-con-home';
+			$context['header_home'] = 'header-home';
+			$context['nav_home'] = 'home-nav';
+			$context['mobile_nav_home'] = 'mobile-nav-home';
+			$context['logo_home'] = 'logo-home.svg';
+			$context['phone_class'] = 'phone-icon';
+			$context['phone_num_class'] = 'tel-num text-white';
+		} else {
+			$context['nav_container_class'] = 'nav-con';
+			$context['header_home'] = 'header';
+			$context['logo_home'] = 'logo-color.svg';
+			$context['mobile_nav_home'] = 'mobile-nav';
+			$context['phone_class'] = 'phone-icon-grey';
+			$context['phone_num_class'] = 'tel-num';
+		}
+		global $post;
+		if($post){$context['page_title'] = $post->post_title;}
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
@@ -186,6 +204,12 @@ class StarterSite extends TimberSite {
 		$context['menu_footer'] = new TimberMenu(8);
 		$context['menu_social'] = new TimberMenu(12);
 		$context['site'] = $this;
+
+		//page links
+		$context['blog_link'] = get_page_link(108);
+		$context['cases_link'] = get_page_link(104);
+		$context['programma_link'] = get_page_link(100);
+		$context['about_link'] = get_page_link(13);
 		return $context;
 	}
 
@@ -203,4 +227,72 @@ new StarterSite();
 function myfoo( $text ) {
 	$text .= ' bar!';
 	return $text;
+}
+
+function single_active( $text ) {
+	$text .= ' bar!';
+	return $text;
+}
+
+$twig = new Twig_Environment();
+$twig->addFunction('call_google_map', new Twig_Function_Function('call_google_map'));
+
+function theme_name_scripts() {
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_style( 'jasny-bootstrap-style', get_template_directory_uri() . '/css/jasny-bootstrap.min.css', array(), '3.1.3');
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/javascripts/bootstrap1.min.js', array(), '3.3.5', true );
+	wp_enqueue_script( 'jasny-bootstrap', get_template_directory_uri() . '/javascripts/jasny-bootstrap.min.js', array(), '3.1.3', true );
+	wp_enqueue_script( 'isotope', get_template_directory_uri() . '/javascripts/isotope.pkgd.min.js', array(), '2.2.0', true );
+	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
+	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
+	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
+	if(is_single()){
+		wp_enqueue_script( 'active-check', get_template_directory_uri() . '/javascripts/active-check.js', array(), '1.0.0', true );
+	}
+	if(is_page('Cases')){
+		wp_enqueue_script('ajaxLoop' , get_template_directory_uri() . '/javascripts/ajaxLoop.js', array(), '1.0.0', true );
+	}
+	if(is_page('Contact')){
+		wp_enqueue_script('google_map-source' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD7NZZbNo0fDffz4l6AB36WDPK5KGZu4QY', array(), '1.0.0', true );
+		wp_enqueue_script('google_map' , get_template_directory_uri() . '/javascripts/google_map.js', array(), '1.0.0', true );
+	}
+}
+
+//Call map
+add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
+
+function call_google_map() {
+	echo '<div id="map-canvas"></div>';
+}
+
+//Add custom headings in editor
+add_filter( 'mce_buttons_2', 'my_mce_buttons_2' );
+
+function my_mce_buttons_2( $buttons ) {
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init' );
+
+function my_mce_before_init( $settings ) {
+
+    $style_formats = array(
+    	array(
+    		'title' => 'H6 Rood',
+				'block' => 'h6',
+    		'classes' => 'red'
+    	),
+      array(
+      	'title' => 'ul block-type list',
+      	'block' => 'ul',
+      	'classes' => 'list',
+      	'wrapper' => true
+      ),
+    );
+
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
+
 }
