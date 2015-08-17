@@ -9,3 +9,4 @@
 **11/08/2015** - Single -case,-programma links added
 **14/08/2015** - All zooms working, new mobile menu implented, alle punten afgewerkt, google marker
 **16/08/2015** - Pagehead images now on random if no featured image, minor fixes hover, blog etc
+**17/08/2015** - Added the custom headings in the editor, added interview categorie and fields

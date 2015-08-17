@@ -485,6 +485,7 @@ a.category{
   padding:4px 10px;
   @include border-radius(2px);
   float:left;
+  margin-right:10px;
 }
 p{
   a{
@@ -940,8 +941,8 @@ a.social{
   }
 }
 .case-box:hover{
-  .case-img{
-    img{
+  div.case-img a{
+    div.img{
       @include scale;
     }
   }
@@ -1285,6 +1286,7 @@ a.social{
 }
 .nav-tabs li a:hover{
   border:1px solid #ddd;
+  border-bottom:0px;
 }
 .nav-tabs li:first-child a{
   z-index:2;
@@ -1611,6 +1613,14 @@ a:hover.related-link-prog div.title-block
   height:100px;
   width:100px;
   float:left;
+  margin-right:20px;
+  img{
+    height:100%;
+    width:100%;
+  }
+}
+.interview-info{
+
 }
 .selected{
   opacity: 0.5;

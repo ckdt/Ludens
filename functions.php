@@ -258,8 +258,41 @@ function theme_name_scripts() {
 	}
 }
 
+//Call map
 add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
 
 function call_google_map() {
 	echo '<div id="map-canvas"></div>';
+}
+
+//Add custom headings in editor
+add_filter( 'mce_buttons_2', 'my_mce_buttons_2' );
+
+function my_mce_buttons_2( $buttons ) {
+    array_unshift( $buttons, 'styleselect' );
+    return $buttons;
+}
+
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init' );
+
+function my_mce_before_init( $settings ) {
+
+    $style_formats = array(
+    	array(
+    		'title' => 'H6 Rood',
+				'block' => 'h6',
+    		'classes' => 'red'
+    	),
+      array(
+      	'title' => 'ul block-type list',
+      	'block' => 'ul',
+      	'classes' => 'list',
+      	'wrapper' => true
+      ),
+    );
+
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
+
 }

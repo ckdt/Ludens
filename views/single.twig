@@ -16,6 +16,17 @@
 				<div class="post-content">
 					<a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a><a class="category">categorie</a>
 					<h1>{{post.title}}</h1>
+
+					{% if post.get_field('profiel_image') and post.get_field('naam') %}
+					<div class="interview-person"><img src="{{ post.get_field('profiel_image') }}"/></div>
+					<ul class="interview-info">
+						<li> Naam: {{ post.get_field('naam') }}</li>
+						<li> Organisatie: {{ post.get_field('organisatie') }}</li>
+						<li> Functie: {{ post.get_field('functie') }}</li>
+						<li> Traject: {{ post.get_field('traject') }}</li>
+					</ul>
+					{% endif %}
+
 					{{post.content}}
 					<div class="share-box">
 						<h2>Interessant? Deel het!</h2>

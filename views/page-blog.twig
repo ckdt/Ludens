@@ -13,7 +13,10 @@
 								<a href="{{post.permalink}}"><div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div></a>
 			        </div>
 			        <div class="featured-blogpost-content">
-			          <a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a><a class="category">categorie</a>
+			          <a class="tijd"><time>{{post.post_date_gmt|time_ago}}</time></a>
+								{% for term in post.terms %}
+									<a class="category">{{term.name}}</a>
+								{% endfor %}
 			          <a href="{{post.permalink}}"><h1>{{post.title}}</h1></a>
 			          <p>{{post.get_preview(35,false,'',true)}}</p>
 			          <a href="{{post.permalink}}" class="button blue-open">lees meer</a>
@@ -38,11 +41,9 @@
 							</div>
 							<div class="blog-box">
 								<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
-								<a class="category">
-									{% for term in post.terms %}
-										{{term.name}}
-									{% endfor %}
-								</a>
+								{% for term in post.terms %}
+									<a class="category">{{term.name}}</a>
+								{% endfor %}
 								<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
 								<p>{{post.get_preview(40,false,'',true)}}</p>
 								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
