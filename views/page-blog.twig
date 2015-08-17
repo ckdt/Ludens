@@ -49,9 +49,13 @@
 								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
 							</div>
 							{% if tweets%}
+								<!--tweet pagination-->
+								{% if current_page != 0 %}
+									{% set key = (current_page - 1) * 3 + key %}
+								{% endif %}
 								<div class="blog-tweet">
 									<span class="tijd-twitter">{{tweets[key].post_date_gmt|time_ago}}</span>
-									<p>{{tweets[key].post_title}}</p>
+									<p>{{tweets[key].post_title}}{{key}}</p>
 									<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
 	              	<span class="author">@ludenstalentontwikkeling</span>
 								</div>
@@ -60,9 +64,13 @@
 					{% else %}
 					<div class="item-blog">
 						{% if tweets%}
+							<!--tweet-key pagination-->
+							{% if current_page != 0 %}
+								{% set key = (current_page - 1) * 3 + key %}
+							{% endif %}
 							<div class="blog-tweet">
 								<span class="tijd-twitter">{{tweets[key].post_date_gmt|time_ago}}</span>
-								<p>{{tweets[key].post_title}}</p>
+								<p>{{tweets[key].post_title}}{{key}}</p>
 								<img class="twitter-icon" src="{{ theme.link }}/img/twitter-icon.svg"/>
 								<span class="author">@ludenstalentontwikkeling</span>
 							</div>
