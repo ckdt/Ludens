@@ -1640,8 +1640,16 @@ span.wpcf7-form-control-wrap{
 }
 /*-----------MAP--------------*/
 #map-canvas{
-  height:400px;
+  height:388px;
   width:100%;
+}
+.route{
+  margin-top:27px;
+  @include ease-in-fast;
+}
+.route:hover{
+  background:$red;
+  color:#fff;
 }
 /*-----------CONTACT 7--------------*/
 input.wpcf7-submit{

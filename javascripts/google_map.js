@@ -75,7 +75,7 @@
       ];
 
       var mapOptions = {
-        center: { lat: 51.927630, lng: 4.478093},
+        center: {lat: 52.16277, lng: 5.243683},
         zoom: 13,
         mapTypeId: MAP_ID
       };
@@ -89,7 +89,7 @@
 
       var image = '../wp-content/themes/ludens/img/pin.svg';
       var beachMarker = new google.maps.Marker({
-         position: {lat: 51.927630, lng: 4.478093},
+         position: {lat: 52.16277, lng: 5.243683},
          map: map,
          icon: image
        });
