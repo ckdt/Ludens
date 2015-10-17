@@ -3,9 +3,9 @@
 {% block content %}
 	<!--Header-->
 	<div class="container pagehead-con">
-		<div class="row">
+		<div class="row header-bg">
 			{% if page.thumbnail %}
-		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
+		 	<img src="{{page.thumbnail.src('full')}}" alt="{{page.title}}">
 			{% else %}
 			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
 			{% endif %}
@@ -58,10 +58,10 @@
 					{% set tabname = term %}
 					<div role="tabpanel" class="tab-pane {% if loop.first %} active{% endif %}" id="{{term}}">
 						{% for person in category %}
-							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 								<div class="person {{person.terms|join(' ')|lower}} {{person.slug}}">
 									<div class="person-img">
-	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src('medium')}}"/></a>
+	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src('large')}}"/></a>
 	              	</div>
 									<div class="person-info">
 	                  <h3><a href="{{person.permalink}}#{{tabname}}">{{person.title}}</a></h3>

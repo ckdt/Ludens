@@ -1235,6 +1235,12 @@ a.social{
       min-height:100%;
     }
   }
+  img{
+    opacity: 0.8;
+  }
+}
+.header-bg{
+  background:#000;
 }
 .pagetitle-con{
 }
@@ -1266,7 +1272,6 @@ a.social{
   border-bottom:0px;
   margin-left:0px;
   margin-right:0px;
-  margin-top:100px;
   li{
     @include titillum;
     font-size:12px;
@@ -1303,6 +1308,9 @@ a.social{
 .nav-tabs li.active a:hover{
   background:#fff;
 }
+.nav-detail{
+  margin-top:100px;
+}
 .person{
   border:1px solid #F2F2F2;
   margin-bottom: 50px;
@@ -1319,7 +1327,6 @@ a.social{
       filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
       -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
        -webkit-transition: all .5s ease-in-out;
-       position: absolute;
        height:auto;
        width:100%;
        left:50%;
@@ -1361,7 +1368,7 @@ a.social{
 }
 .profile-img{
   float:left;
-  height:383px;
+  height:460px;
   width:375px;
   overflow:hidden;
   img{
