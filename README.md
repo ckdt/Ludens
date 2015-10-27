@@ -20,4 +20,6 @@
 
 **17/08/2015** - **First version** Added the custom headings in the editor, added interview categorie and fields, styled contact page, minor fixes.
 
-**05/10/2015** - Backup - comeback
+**05/10/2015** - Backup - before feedback changes
+
+**27/10/2015** - Ludens updated sharpened after feedback  

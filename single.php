@@ -25,6 +25,7 @@ foreach($taxonomy as $term){
 		'post_type' => 'team',
 		'orderby' => 'menu_order',
 		'post_status' => 'publish',
+		'posts_per_page' => -1,
 		'tax_query' => array(
 				array(
 				'taxonomy' => 'team-cat',
@@ -63,6 +64,8 @@ if($blog_posts){
 	}
 }
 
+//tweets
+$data['tweets'] = Timber::get_posts('post_type=tweet');//get tweets
 
 // Quote's
 $data['quote'] = Timber::get_post('post_type=quotes&post_status=publish&orderby=rand');

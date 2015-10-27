@@ -2,14 +2,8 @@
 
 {% block content %}
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row header-bg">
-			{% if page.thumbnail %}
-		 	<img src="{{page.thumbnail.src('full')}}" alt="{{page.title}}">
-			{% else %}
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
-			{% endif %}
-		</div>
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src('full')}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
 	<!--pagehead title and description-->
@@ -85,6 +79,7 @@
       <div class="col-lg-12">
         <span class="quote-font text-white">{{ quote.get_field('quote_text') }}</span>
       </div>
+			<span class="quote-author">{% if quote.get_field('quote-author') %}-{% endif %} {{ quote.get_field('quote-author') }}</span>
     </div>
   </div>
 	{% endif %}

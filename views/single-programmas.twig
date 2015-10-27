@@ -4,10 +4,8 @@
 	{% set page_title = 'Wat we doen' %}
 
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row page-head header-bg">
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{post.title}}" />
-		</div>
+	<div class="container pagehead-con" style="background:url('{{post.thumbnail.src('full')}}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
   <!--pagehead title and description-->

@@ -29,25 +29,28 @@
       <div class="col-lg-12"><span class="title text-white">{% if current_page == 0 %}RECENTE {% endif %}BLOG BERICHTEN {% if current_page != 0 %}- PAGINA {{current_page}}{% endif %}</span></div>
     </div>
 
+		<!--all blog posts -->
 		<div class="blog-container">
 			{% if posts %}
 				{% for key,post in posts %}
 					{% if loop.index0 is even %}
 					<div class="item-blog">
-							<div class="blog-img">
-								<a href="{{post.permalink}}">
-									<div class="img" style="background-image:url('{{post.thumbnail.src('medium')}}')"></div>
-								</a>
-							</div>
-							<div class="blog-box">
-								<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
-								{% for term in post.terms %}
-									<a class="category">{{term.name}}</a>
-								{% endfor %}
-								<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
-								<p>{{post.get_preview(40,false,'',true)}}</p>
-								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
-							</div>
+							<article>
+								<div class="blog-img">
+									<a href="{{post.permalink}}">
+										<div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div>
+									</a>
+								</div>
+								<div class="blog-box">
+									<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
+									{% for term in post.terms %}
+										<a class="category">{{term.name}}</a>
+									{% endfor %}
+									<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
+									<p>{{post.get_preview(40,false,'',true)}}</p>
+									<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
+								</div>
+							</article>
 							{% if tweets%}
 								<!--tweet pagination-->
 								{% if current_page != 0 %}
@@ -81,22 +84,24 @@
 								</div>
 							{% endif %}
 						{% endif %}
-						<div class="blog-img">
-							<a href="{{post.permalink}}">
-								<div class="img" style="background-image:url('{{post.thumbnail.src('medium')}}')"></div>
-							</a>
-						</div>
-						<div class="blog-box">
-							<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
-							<a class="category">
-								{% for term in post.terms %}
-									{{term.name}}
-								{% endfor %}
-							</a>
-							<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
-							<p>{{post.get_preview(40,false,'',true)}}</p>
-							<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
-						</div>
+						<article>
+							<div class="blog-img">
+								<a href="{{post.permalink}}">
+									<div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div>
+								</a>
+							</div>
+							<div class="blog-box">
+								<a class="tijd" href="{{post.permalink}}"><time>{{post.post_date_gmt|time_ago}}</time></a>
+								<a class="category">
+									{% for term in post.terms %}
+										{{term.name}}
+									{% endfor %}
+								</a>
+								<a class="blog-title" href="{{post.permalink}}">{{post.title}}</a>
+								<p>{{post.get_preview(40,false,'',true)}}</p>
+								<a class="button blue-open" href="{{post.permalink}}">Lees meer</a>
+							</div>
+						</article>
 					</div>
 					{% endif %}
 				{% endfor %}
@@ -119,11 +124,12 @@
 
 	<!--Quote-->
 	{% if quote %}
-		<div class="container quote-con">
+		<div class="container quote-con-blog">
       <div class="row quote">
         <div class="col-lg-12">
           <span class="quote-font">{{ quote.get_field('quote_text') }}</span>
         </div>
+				<span class="quote-author">{% if quote.get_field('quote-author') %}-{% endif %} {{ quote.get_field('quote-author') }}</span>
       </div>
     </div>
 	{% endif %}

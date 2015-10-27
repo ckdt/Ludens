@@ -3,14 +3,8 @@
 {% block content %}
 
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row header-bg">
-			{% if page.thumbnail %}
-			<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
-			{% else %}
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
-			{% endif %}
-		</div>
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src('full')}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
 	<!--pagehead title and description-->
@@ -30,18 +24,18 @@
 		<div class="row about-textbox">
 			{% for col in page.get_field('content_columns') %}
 				{% if loop.length == 1 or loop.length == 2 %}
-					<div class="col-md-6 col-xs-12 about-text">
-				{% else %}
 					<div class="col-md-4 col-xs-12 about-text">
-					{% if loop.last %}
-						<p>WAAR KAN JE ONS VINDEN</p>
-						<div id="map-canvas"></div>
-						<a class="button route" href="https://www.google.com/maps/dir//Soestdijkerweg+12A,+3734+MH+Den+Dolder,+Nederland/@52.1629413,5.2432083,17z/data=!4m13!1m4!3m3!1s0x47c66a032111529b:0x2c6cab34fc4f0c40!2sSoestdijkerweg+12A,+3734+MH+Den+Dolder,+Nederland!3b1!4m7!1m0!1m5!1m1!1s0x47c66a032111529b:0x2c6cab34fc4f0c40!2m2!1d5.2436835!2d52.1627698?hl=nl-NL">routebeschrijving</a>
-					{% endif %}
 				{% endif %}
 					{{col.column}}
-				</div><!-- end column -->
+				</div>
+				<!-- end column -->
 			{% endfor %}
+			<div class="col-md-4 col-xs-12 about-text">
+				<p>WAAR KAN JE ONS VINDEN</p>
+				<div id="map-canvas"></div>
+				<a class="button route" target="_blank" href="https://www.google.com/maps/dir//Soestdijkerweg+12A,+3734+MH+Den+Dolder,+Nederland/@52.1629413,5.2432083,17z/data=!4m13!1m4!3m3!1s0x47c66a032111529b:0x2c6cab34fc4f0c40!2sSoestdijkerweg+12A,+3734+MH+Den+Dolder,+Nederland!3b1!4m7!1m0!1m5!1m1!1s0x47c66a032111529b:0x2c6cab34fc4f0c40!2m2!1d5.2436835!2d52.1627698?hl=nl-NL">routebeschrijving</a>
+				{{col.column}}
+			</div>
 		</div>
 	</div>
 

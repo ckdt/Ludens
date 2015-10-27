@@ -3,14 +3,8 @@
 {% block content %}
 
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row header-bg">
-			{% if page.thumbnail %}
-		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
-			{% else %}
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
-			{% endif %}
-		</div>
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src('full')}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
 	<!--pagehead title and description-->
@@ -49,7 +43,7 @@
 					<div class="related">
 						<a href="{{case.permalink}}">
               <div class="related-img">
-                <div class="img" style="background-image:url('{{case.thumbnail.src('medium')}}')"></div>
+                <div class="img" style="background-image:url('{{case.thumbnail.src('large')}}')"></div>
 								<span>{{case.post_title}}</span>
               </div>
             </a>
@@ -58,7 +52,7 @@
 								{% set rel_link = TimberPost(relation.ID) %}
 	              <span class="description"><a href="{{rel_link.permalink}}">{{relation.post_title}}</a></span>
 							{% endfor %}
-              <p>Schiphol Group is een world of opportunities. Er zijn zoveel verschillende disciplines, soorten afdelingen en werkzaamheden dat de interne mobiliteit heel interessant is. </p>
+              <p>{{case.get_preview(35,false,'',true)}}</p>
 						</div>
 						<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Lees meer</span></div></a>
 					</div>

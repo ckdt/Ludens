@@ -268,33 +268,12 @@ function call_google_map() {
 }
 
 //Add custom headings in editor
-add_filter( 'mce_buttons_2', 'my_mce_buttons_2' );
+function my_theme_add_editor_styles() {
+    add_editor_style( 'tinymce-styles.css' );
 
-function my_mce_buttons_2( $buttons ) {
-    array_unshift( $buttons, 'styleselect' );
-    return $buttons;
+		$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Playfair+Display' );
+    add_editor_style( $font_url );
+		$font_url_2 = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=Titillium+Web:400,700,600,300' );
+    add_editor_style( $font_url_2 );
 }
-
-add_filter( 'tiny_mce_before_init', 'my_mce_before_init' );
-
-function my_mce_before_init( $settings ) {
-
-    $style_formats = array(
-    	array(
-    		'title' => 'H6 Rood',
-				'block' => 'h6',
-    		'classes' => 'red'
-    	),
-      array(
-      	'title' => 'ul block-type list',
-      	'block' => 'ul',
-      	'classes' => 'list',
-      	'wrapper' => true
-      ),
-    );
-
-    $settings['style_formats'] = json_encode( $style_formats );
-
-    return $settings;
-
-}
+add_action( 'admin_init', 'my_theme_add_editor_styles' );
