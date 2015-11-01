@@ -22,7 +22,9 @@ jQuery(document).ready(function($) {
 
   //open tab by getting hash of url
   activaTab(target);
-  $('span#tab').text(target);
+  $('a#tab').text(target);
+  //var tablink = window.location.href; obtain current url
+  $('a#tab').attr('href','#');
 
   // delete hash so the page won't scroll to it
   window.location.hash = "";
@@ -50,5 +52,11 @@ jQuery(document).ready(function($) {
 
     $(selected).addClass('selected');
   }
+
+  $('a#tab').click(function(){
+    $('html, body').animate({
+       scrollTop: $(hash).offset().top
+    }, 500);
+  });
 
 });

@@ -19,6 +19,7 @@
 	</div>
 
 	<!--Text-->
+	{% if page.get_field('content_columns') %}
 	<div class="container white">
   	<div class="row about-textbox">
 			{% for col in page.get_field('content_columns') %}
@@ -32,6 +33,7 @@
 			{% endfor %}
 		</div>
 	</div>
+	{% endif %}
 
 	<!--programmas-->
 	<div class="container programma-con">
@@ -44,7 +46,7 @@
 							<div class="programma-infobox-img" style="background:url('{{programma.thumbnail.src('large')}}');background-size:cover;">
 							</div>
 						</a>
-						<div class="programma-content">
+						<div class="programma-content programma-page">
 							<h2><a href="{{programma.permalink}}">{{programma.title}}</a></h2>
 							<span class="description">{{programma.get_field('subtitle')}}</span>
 							<p>{{programma.get_preview(35,false,'',true)}}</p>

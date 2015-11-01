@@ -19,7 +19,7 @@
 .darkgrey {background: $darkgrey}
 .white { background: $white; }
 .grey { background: #E6E7E8; }
-.darkblue { background : $darkblue}
+.darkblue { background : $darkblue !important;}
 .lightgrey { background: #f2f2f2;}
 
 //headings----------------------
@@ -534,6 +534,7 @@ a.social{
   //padding-right:20px;
   padding:0px;
   width:1440px;
+  //position: absolute;
 }
 .row{
   padding-left:20px !important;
@@ -1262,6 +1263,9 @@ aside div.blog-tweet{
 .about-textbox{
   padding:60px;
 }
+.about-textbox-team{
+  padding:60px 0 0;
+}
 .about-text p{
   margin-top: 10px;
 }
@@ -1288,6 +1292,7 @@ aside div.blog-tweet{
   background:rgba(0,0,0,0.25);
 }
 .pagetitle-con{
+  position: absolute;
 }
 .page-title{
   position:absolute;
@@ -1313,7 +1318,8 @@ aside div.blog-tweet{
 }
 .nav-tabs{
   background: #F2F2F2;
-  margin-bottom:50px;
+  margin-bottom:30px;
+  margin-top:0px;
   border-bottom:0px;
   margin-left:0px;
   margin-right:0px;
@@ -1354,19 +1360,20 @@ aside div.blog-tweet{
   background:#fff;
 }
 .nav-detail{
-  margin-top:100px;
+  margin-top:30px;
 }
 .person{
   border:1px solid #F2F2F2;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   @include ease-in;
 }
 .person:hover{
   @include box-shadow-hov;
   .person-img{
     img{
-      filter: none;
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
       -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
       //-webkit-transform: scale(1.1);
     }
   }
@@ -1380,9 +1387,12 @@ aside div.blog-tweet{
     img{
       width: 100%;
       @include vertical-align;
-      filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+      filter: grayscale(100%);
+      //filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
       -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
        -webkit-transition: all .5s ease-in-out;
+       -moz-transition: all .5s ease-in-out;
        height:auto;
        width:100%;
        left:50%;
@@ -2235,6 +2245,7 @@ body,
   }
   .quote{
     height:auto;
+    padding-bottom:90px;
   }
   .programma-textbox{
     margin-bottom: 0px;
@@ -2299,6 +2310,9 @@ body,
   }
   .programma-textbox div.programma-content{
     bottom:-50px;
+  }
+  .programma-page{
+    min-height:290px !important;
   }
   .programma-textbox div.programma-content span.description{
     font-size:13px;
@@ -2365,10 +2379,16 @@ body,
     margin-top:20px;
   }
   .profile-img{
-    width:280px;
-    height:280px;
+    width:100%;
+    height:380px;
     margin:0 auto 30px;
     float:initial;
+    img{
+      top:60%;
+    }
+  }
+  .person-img img{
+    top:75%;
   }
   .information{
     padding:0px;
@@ -2398,6 +2418,12 @@ body,
   }
   .size-large{
     width:767px;
+  }
+  aside{
+    margin-top:30px;
+  }
+  .related-content{
+    height:255px;
   }
 }
 //BETWEEN 767px - 600px ----------------------------
@@ -2433,5 +2459,11 @@ body,
   }
   .size-large{
     width:321px;
+  }
+  .programma-page{
+    min-height:320px !important;
+  }
+  .related-content{
+    height:255px;
   }
 }

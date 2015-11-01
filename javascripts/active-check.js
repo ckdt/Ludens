@@ -4,7 +4,15 @@ jQuery(document).ready(function($) {
     $('li[id="Cases"]').addClass('active');
   } else if (window.location.href.indexOf('wat-we-doen') > -1) {
     $('li[id="Wat we doen"]').addClass('active');
+  } else if (window.location.href.indexOf('talentprogrammas') > -1) {
+    $('li[id="Wat we doen"]').addClass('active');
+  } else if (window.location.href.indexOf('veranderprogrammas') > -1) {
+    $('li[id="Wat we doen"]').addClass('active');
+  } else if (window.location.href.indexOf('management-development') > -1) {
+    $('li[id="Wat we doen"]').addClass('active');
   } else if(window.location.href.indexOf('over-ons') > -1) {
+    $('li[id="Over ons"]').addClass('active');
+  } else if(window.location.href.indexOf('team=') > -1) {
     $('li[id="Over ons"]').addClass('active');
   } else {
     $('#Blog').addClass('active');

@@ -20,6 +20,7 @@
 	</div>
 
 	<!--Text-->
+	{% if page.get_field('content_columns') %}
 	<div class="container white">
   	<div class="row about-textbox">
 			{% for col in page.get_field('content_columns') %}
@@ -33,11 +34,12 @@
 			{% endfor %}
 		</div>
 	</div>
+	{% endif %}
 
 	<!--Cases-->
-	<div class="container cases-con">
-  	<div class="row cases-all">
-			<div class="col-lg-12"><span class="title">CASES</span></div>
+	<div class="container cases-con darkblue">
+  	<div class="row cases-all darkblue">
+			<div class="col-lg-12"><span class="title text-white">CASES</span></div>
 			{% for case in cases %}
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 about-text">
 					<div class="related">
@@ -52,7 +54,11 @@
 								{% set rel_link = TimberPost(relation.ID) %}
 	              <span class="description"><a href="{{rel_link.permalink}}">{{relation.post_title}}</a></span>
 							{% endfor %}
-              <p>{{case.get_preview(35,false,'',true)}}</p>
+							{% if case.post_excerpt %}
+								<p>{{ case.post_excerpt | truncate(33) }}</p>
+							{% else %}
+              	<p>{{case.get_preview(35,false,'',true)}}</p>
+							{% endif %}
 						</div>
 						<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Lees meer</span></div></a>
 					</div>

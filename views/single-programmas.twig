@@ -28,7 +28,7 @@
 			</div>
 
 			<aside class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 about-text">
-	      {% for rel in post_related %}
+				{% for rel in post_related | slice(0,1) %}
 					<span class="col-title">GERELATEERDE CASE</span>
 		      <div class="related">
 		        <div class="related-img">

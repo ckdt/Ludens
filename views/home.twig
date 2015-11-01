@@ -70,14 +70,19 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 case-box">
 						<article>
 							<div class="case-img">
-								<a href="{{case.permalink}}"><div class="img" style="background-image:url('{{case.thumbnail.src('large')}}')"></div></a>
+								<a href="{{case.permalink}}"><div class="img" style="background-image:url('{{case.thumbnail.src('large')}}')"></div>
 								<h1>{{case.title}}</h1>
+								</a>
 							</div>
 							<div class="case">
 								{% for relation in case.get_field('related')|slice(0, 1) %}
 								<span class="description"><a href="{{relation.guid}}">{{relation.post_title}}</a></span>
 								{% endfor %}
-								<p>{{case.get_preview(35,false,'',true)}}</p>
+								{% if case.post_excerpt %}
+									<p>{{ case.post_excerpt | truncate(33) }}</p>
+								{% else %}
+	              	<p>{{case.get_preview(35,false,'',true)}}</p>
+								{% endif %}
 							</div>
 							<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Bekijk case</span></div></a>
 						</article>
