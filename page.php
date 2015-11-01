@@ -28,7 +28,21 @@ if (is_front_page()){
 	$data['programma_items'] = Timber::get_posts('post_type=programmas&post_status=publish&orderby=menu_order&order=ASC&posts_per_page=3');
 
 	// Cases
-	$data['case_items'] = Timber::get_posts('post_type=cases&post_status=publish&order=DESC&posts_per_page=3');
+	// Obtain cases by this filter(featured)
+	$featured = array(
+		'post_type' => 'cases',
+		'post_status' => 'publish',
+		'order' => 'DESC',
+		'post_per_page' => '3',
+		'meta_query' => array(
+			array(
+				'key' => 'featured-checkbox',
+				'value' => 'yes',
+			)
+		)
+	);
+
+	$data['case_items'] = Timber::get_posts($featured);
 
 	// Klanten
 	$data['client_items'] = Timber::get_posts('post_type=klanten&post_status=publish&orderby=menu_order&order=ASC');
