@@ -4,7 +4,7 @@
   {% set page_title = 'Cases' %}
 
   <!--Header-->
-	<div class="container pagehead-con" style="background:url('{{post.thumbnail.src('full')}}');background-size:cover;background-position:center center;">
+	<div class="container pagehead-con" style="background:url('{{post.thumbnail.src|resize(1440, 260)}}');background-size:cover;background-position:center center;">
 		<div class="row header-bg"></div>
 	</div>
 
@@ -32,7 +32,7 @@
         {% for rel in post_related %}
 		      <div class="related">
 		        <div class="related-img">
-		          <a href="{{rel.permalink}}"><div class="img" style="background-image:url('{{rel.thumbnail.src('medium')}}')"></div></a>
+		          <a href="{{rel.permalink}}"><div class="img" style="background-image:url('{{rel.thumbnail.src|resize(740,440)}}')"></div></a>
 		          <a href="{{rel.permalink}}"><span>{{rel.title}}</span></a>
 		        </div>
 		        <div class="related-content">

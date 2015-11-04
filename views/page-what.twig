@@ -2,7 +2,7 @@
 
 {% block content %}
 	<!--Header-->
-	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src('full')}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src|resize(1440, 260)}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
 		<div class="row header-bg"></div>
 	</div>
 
@@ -43,7 +43,7 @@
 				<div class="col-md-4 col-sm-6 col-xs-12">
 					<div class="programma-infobox">
 						<a href="{{programma.permalink}}" class="programma-img-container">
-							<div class="programma-infobox-img" style="background:url('{{programma.thumbnail.src('large')}}');background-size:cover;">
+							<div class="programma-infobox-img" style="background:url('{{programma.thumbnail.src|resize(748, 720)}}');background-size:cover;">
 							</div>
 						</a>
 						<div class="programma-content programma-page">

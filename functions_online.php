@@ -246,6 +246,7 @@ function theme_name_scripts() {
 	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
 	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'google-analytics', get_template_directory_uri() . '/javascripts/google_analytics.js', array(), '1.0.0', true );
 	wp_enqueue_style( 'google-fonts-1', 'http://fonts.googleapis.com/css?family=Titillium+Web:400,700,600,300', true );
 	wp_enqueue_style( 'google-fonts-2', 'http://fonts.googleapis.com/css?family=Playfair+Display', true );
 	if(is_single()){
@@ -327,3 +328,24 @@ if( isset( $_POST[ 'featured-checkbox' ] ) ) {
 
 }
 add_action( 'save_post', 'prfx_meta_save' );
+
+//-------------------SET OFFSET TO BLOG---------------------------
+
+add_action('pre_get_posts', 'myprefix_query_offset', 1 );
+function myprefix_query_offset(&$query) {
+
+		if ( !is_page_template( 'page-blog.php' )  ) {
+        return ;
+    }
+
+    $offset = 1;
+    $ppp = 3;
+
+    if ( $query->is_paged() ) {
+        $page_offset = $offset + ( ($query->query_vars['paged']-1) * $ppp );
+        $query->set('offset', $page_offset );
+    }
+    else {
+        $query->set('offset',$offset);
+    }
+}

@@ -7,8 +7,9 @@
 		<div class="row blog-head">
 			{% if posts %}
 				{% if current_page == 0 %}
-					{% for post in posts|slice(0,1) %}
+					{% for post in featured|slice(0,1) %}
 			      <div class="col-lg-12 featured-blogpost">
+							<!--<p>{{test.post_title}}</p>-->
 			        <div class="featured-blogpost-img">
 								<a href="{{post.permalink}}"><div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div></a>
 			        </div>
@@ -38,7 +39,7 @@
 							<article>
 								<div class="blog-img">
 									<a href="{{post.permalink}}">
-										<div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div>
+										<div class="img" style="background-image:url('{{post.thumbnail.src|resize(748, 420)}}')"></div>
 									</a>
 								</div>
 								<div class="blog-box">
@@ -87,7 +88,7 @@
 						<article>
 							<div class="blog-img">
 								<a href="{{post.permalink}}">
-									<div class="img" style="background-image:url('{{post.thumbnail.src('large')}}')"></div>
+									<div class="img" style="background-image:url('{{post.thumbnail.src|resize(748, 420)}}')"></div>
 								</a>
 							</div>
 							<div class="blog-box">

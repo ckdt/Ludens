@@ -40,7 +40,7 @@ $data['holder'] = $holder;
 
 //related posts for case single
 $related_posts = get_field('related', $post->ID);
-shuffle($related_posts);
+//shuffle($related_posts);
 if($related_posts ){
 	foreach ($related_posts as $rel) {
 		$data['post_related'][] =  new TimberPost($rel->ID);

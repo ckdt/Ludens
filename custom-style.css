@@ -1525,11 +1525,11 @@ aside div.blog-tweet {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  opacity: 0.2;
+  opacity: 0.9;
 }
 /* line 1199, sass/custom-style.scss */
 .klant-logo img:hover {
-  opacity: 0.4;
+  opacity: 1;
 }
 
 /* line 1203, sass/custom-style.scss */

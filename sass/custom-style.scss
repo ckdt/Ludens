@@ -1194,10 +1194,10 @@ aside div.blog-tweet{
     margin:0 auto;
     @include vertical-align;
     @include ease-in;
-    opacity: 0.2;
+    opacity: 0.9;
   }
   img:hover{
-    opacity: 0.4;
+    opacity: 1;
   }
 }
 .footer-con{

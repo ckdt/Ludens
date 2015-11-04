@@ -3,9 +3,9 @@
 {% block content %}
 
 	<!--Header-->
-	<div class="container posthead-con">
+	<div class="container posthead-con" style="background-image: url('{{post.thumbnail.src|resize(1440,460)}}');background-position:center center;background-size:cover;">
 		<div class="row">
-		 <img src="{{post.thumbnail.src('full')}}"/>
+
 		</div>
 	</div>
 
@@ -46,7 +46,7 @@
 					{% for rel_case in related_cases|slice(0,1) %}
 					<div class="no-border related">
 						<div class="related-img">
-							<a href="{{rel_case.permalink}}"><div class="img" style="background-image:url('{{rel_case.thumbnail.src('medium')}}')"></div></a>
+							<a href="{{rel_case.permalink}}"><div class="img" style="background-image:url('{{rel_case.thumbnail.src|resize(740,440)}}')"></div></a>
 							<a href="{{rel_case.permalink}}"><span>{{rel_case.title}}</span></a>
 						</div>
 						<div class="related-content">

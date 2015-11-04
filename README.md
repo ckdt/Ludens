@@ -23,3 +23,5 @@
 **05/10/2015** - Backup - before feedback changes
 
 **27/10/2015** - Ludens updated sharpened after feedback  
+
+**04/11/2015** - Ludens added resize, blog featured post, home featured cases  

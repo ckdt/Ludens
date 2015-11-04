@@ -19,14 +19,23 @@ $data['page'] = new TimberPost();
 
 // Blog
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 $blog_items = array(
 	'post_type'=> 'post',
 	'paged' => $paged,
 	'posts_per_page'=> 3,
 	'status' => 'publish',
-	'order' => 'DESC',
 );
+
+$featured_item = array(
+	'post_type'=> 'post',
+	'status' => 'publish',
+	'posts_per_page'=> -1
+);
+
+
 $data['posts'] = Timber::get_posts($blog_items);//get normal posts
+$data['featured'] = Timber::get_posts($featured_item);//get normal posts
 $data['tweets'] = Timber::get_posts('post_type=tweet');//get tweets
 $data['tweet_count'] = count(get_posts('post_type=tweet')) - 1; //number of tweets
 
@@ -43,7 +52,6 @@ if(get_query_var('paged') == 0){
 
 //get previous page
 $data['previous_page'] = get_query_var('paged') - 1;
-
 
 
 // Quote's
