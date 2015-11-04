@@ -92,7 +92,7 @@ class StarterSite extends TimberSite {
 			'menu_position' => 6,
 			'hierarchical' => true,
 			'has_archive' => false,
-			'supports' => array('title','thumbnail', 'page-attributes', 'editor','excerpt'),
+			'supports' => array('title','thumbnail', 'page-attributes', 'editor', 'excerpt'),
 			'rewrite' => array('slug' => _x('case', 'URL slug', 'ludens'), 'with_front' => true)
 			)
 		);
@@ -200,16 +200,16 @@ class StarterSite extends TimberSite {
 		$context['foo'] = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::get_context();';
-		$context['menu_main'] = new TimberMenu(7);
-		$context['menu_footer'] = new TimberMenu(8);
-		$context['menu_social'] = new TimberMenu(12);
+		$context['menu_main'] = new TimberMenu(2);
+		$context['menu_footer'] = new TimberMenu(9);
+		$context['menu_social'] = new TimberMenu(10);
 		$context['site'] = $this;
 
 		//page links
-		$context['blog_link'] = get_page_link(108);
-		$context['cases_link'] = get_page_link(104);
-		$context['programma_link'] = get_page_link(100);
-		$context['about_link'] = get_page_link(13);
+		$context['blog_link'] = get_page_link(53);
+		$context['cases_link'] = get_page_link(51);
+		$context['programma_link'] = get_page_link(49);
+		$context['about_link'] = get_page_link(47);
 		return $context;
 	}
 
@@ -246,7 +246,7 @@ function theme_name_scripts() {
 	wp_enqueue_script( 'imageloaded', get_template_directory_uri() . '/javascripts/imagesloaded.pkgd.min.js', array(), '3.1.8', true );
 	wp_enqueue_script( 'jquery-color', get_template_directory_uri() . '/javascripts/jquery.color-2.1.2.min.js', array(), '2.1.2', true );
 	wp_enqueue_script( 'custom-script', get_template_directory_uri() . '/javascripts/custom-script.js', array(), '1.0.0', true );
-	//wp_enqueue_script( 'google-analytics', get_template_directory_uri() . '/javascripts/google_analytics.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'google-analytics', get_template_directory_uri() . '/javascripts/google_analytics.js', array(), '1.0.0', true );
 	wp_enqueue_style( 'google-fonts-1', 'http://fonts.googleapis.com/css?family=Titillium+Web:400,700,600,300', true );
 	wp_enqueue_style( 'google-fonts-2', 'http://fonts.googleapis.com/css?family=Playfair+Display', true );
 	if(is_single()){
@@ -256,7 +256,7 @@ function theme_name_scripts() {
 		wp_enqueue_script('ajaxLoop' , get_template_directory_uri() . '/javascripts/ajaxLoop.js', array(), '1.0.0', true );
 	}
 	if(is_page('Contact')){
-		wp_enqueue_script('google_map-source' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD7NZZbNo0fDffz4l6AB36WDPK5KGZu4QY', array(), '1.0.0', true );
+		wp_enqueue_script('google_map-source' , 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAdqWY85JXY_Umg-81XylBxuB0mMeOrqyU', array(), '1.0.0', true );
 		wp_enqueue_script('google_map' , get_template_directory_uri() . '/javascripts/google_map.js', array(), '1.0.0', true );
 	}
 }

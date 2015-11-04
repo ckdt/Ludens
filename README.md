@@ -19,3 +19,9 @@
 **16/08/2015** - Pagehead images now on random if no featured image, minor fixes hover, blog etc
 
 **17/08/2015** - **First version** Added the custom headings in the editor, added interview categorie and fields, styled contact page, minor fixes.
+
+**05/10/2015** - Backup - before feedback changes
+
+**27/10/2015** - Ludens updated sharpened after feedback  
+
+**04/11/2015** - Ludens added resize, blog featured post, home featured cases  

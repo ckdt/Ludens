@@ -4,10 +4,8 @@
   {% set page_title = 'Cases' %}
 
   <!--Header-->
-	<div class="container pagehead-con">
-		<div class="row page-head">
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{post.title}}" />
-		</div>
+	<div class="container pagehead-con" style="background:url('{{post.thumbnail.src|resize(1440, 260)}}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
   <!--pagehead title and description-->
@@ -30,12 +28,12 @@
 			</div>
 
 			<aside class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-lg-offset-1 col-md-offset-1 about-text">
-	      {% if post_related %}<span class="col-title">GERELATEERDE Programma</span>{% endif %}
+	      {% if post_related %}<span class="col-title">Lees meer over dit soort programma’s</span>{% endif %}
         {% for rel in post_related %}
 		      <div class="related">
 		        <div class="related-img">
-		          <a href="{{rel.permalink}}"><div class="img" style="background-image:url('{{rel.thumbnail.src('medium')}}')"></div></a>
-		          <a><span>{{rel.title}}</span></a>
+		          <a href="{{rel.permalink}}"><div class="img" style="background-image:url('{{rel.thumbnail.src|resize(740,440)}}')"></div></a>
+		          <a href="{{rel.permalink}}"><span>{{rel.title}}</span></a>
 		        </div>
 		        <div class="related-content">
 		          <p>{{rel.get_preview(35,false,'',true)}}</p>
