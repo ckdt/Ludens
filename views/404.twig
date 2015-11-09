@@ -1,5 +1,40 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	Sorry, we couldn't find what you're looking for.
+		<!--Header-->
+		<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src('full')}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+			<div class="row header-bg"></div>
+		</div>
+
+		<!--pagehead title and description-->
+		<div class="container pagetitle-con">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="page-title">
+						<h1>Helaas</h1>
+						<p>deze pagina kan niet worden gevonden.</p>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!--Text-->
+		<div class="container white">
+			<div class="row about-textbox">
+				<div class="col-md-4 col-xs-12 about-text">
+					<h6 class="red">Mogelijk bestaat de pagina niet meer of is de URL onjuist. Controleer het adres of navigeer naar één van de volgende pagina's:</h6>
+					<br/><br/><br/>
+					<ul class="errorpage-list">
+						{% for item in menu_main.get_items %}
+							<li class="{{item.classes | join(' ')}}">
+								<a class="nav-link" href="{{item.get_link}}">{{item.title}}</a>
+							</li>
+						{% endfor %}
+					</ul>
+					<br/><br/><br/>
+				</div><!-- end column -->
+			</div>
+		</div>
+
+
 {% endblock %}

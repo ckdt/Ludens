@@ -19,7 +19,7 @@
 .darkgrey {background: $darkgrey}
 .white { background: $white; }
 .grey { background: #E6E7E8; }
-.darkblue { background : $darkblue}
+.darkblue { background : $darkblue !important;}
 .lightgrey { background: #f2f2f2;}
 
 //headings----------------------
@@ -43,6 +43,12 @@ transition: all 0.5s ease-in-out;
 -moz-transition: all 0.25s ease-in-out;
 -o-transition: all 0.25s ease-in-out;
 transition: all 0.25s ease-in-out;
+}
+@mixin ease-in-3{
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 @mixin scale(){
   -webkit-transform: scale(1.1,1.1);
@@ -79,6 +85,11 @@ transition: all 0.25s ease-in-out;
   -moz-background-size: cover;
   -webkit-background-size: cover;
   background-size: cover;
+}
+@mixin box-shadow-hov{
+  -webkit-box-shadow:0px 2px 20px 0px rgba(0,0,0,0.10);
+  -moz-box-shadow:0px 2px 20px 0px rgba(0,0,0,0.10);
+  box-shadow: 0px 2px 20px 0px rgba(0,0,0,0.10);
 }
 span{
   &.more-col{
@@ -213,12 +224,14 @@ h3{
   font-size:18px;
   font-weight: bold;
   color:$blue;
+  margin-top:15px;
 }
 h4{
   @include titillum;
   font-weight: bold;
   font-size:18px;
   color:$red;
+  margin-top:15px;
 }
 h5{
   @include titillum;
@@ -328,7 +341,7 @@ ul{
   margin-bottom:20px;
   li{
     margin-bottom:4px;
-    list-style-type: none;
+    list-style-type: disc;
   }
 }
 ul.list li:before{
@@ -488,6 +501,8 @@ a.category{
   margin-right:10px;
 }
 p{
+  margin:0 0 15px;
+  line-height:1.65;
   a{
     color:$red;
     text-decoration: underline;
@@ -519,6 +534,7 @@ a.social{
   //padding-right:20px;
   padding:0px;
   width:1440px;
+  //position: absolute;
 }
 .row{
   padding-left:20px !important;
@@ -866,18 +882,14 @@ a.social{
 .programma-infobox{
   height:558px;
   margin:50px 0;
+  a.programma-img-container{
+    overflow:hidden;
+  }
   div.programma-infobox-img{
     position: relative;
     overflow:hidden;
     height:240px;
-    img{
-      @include scale-out;
-      position: absolute;
-      width:100%;
-      height:auto;
-      left:50%;
-      margin-left:-50%;
-    }
+    @include scale-out;
   }
   div.programma-content{
     background:$white;
@@ -911,9 +923,7 @@ a.social{
 }
 .programma-infobox:hover{
   div.programma-infobox-img{
-    img{
-      @include scale;
-    }
+    @include scale;
   }
   a div.title-block{
     text-decoration: none;
@@ -941,6 +951,10 @@ a.social{
   }
 }
 .case-box:hover{
+  article{
+    @include box-shadow-hov;
+    @include ease-in-3;
+  }
   div.case-img a{
     div.img{
       @include scale;
@@ -984,7 +998,7 @@ a.social{
     position: absolute;
     bottom:20px;
     left:30px;
-    font-size:42px;
+    font-size:32px;
   }
   img{
     min-width:100%;
@@ -1012,6 +1026,7 @@ a.social{
   background: $blue;
   overflow:auto;
   padding-bottom:40px;
+  position:relative;
 }
 .quote-top-border{
   height:260px;
@@ -1026,13 +1041,23 @@ a.social{
   font-weight:300;
   text-align: center;
   display:inline-block;
+  width:100%;
+}
+.quote-author{
+  font-size:18px;
+  color:#fff;
+  position: absolute;
+  bottom:35px;
+  left:0px;
+  width:100%;
+  text-align: center;
 }
 .item-blog{
   width:413px;
 }
-.item-blog:hover{
+.item-blog article:hover{
   .blog-img{
-    img{
+    .img{
       @include scale;
     }
   }
@@ -1084,6 +1109,10 @@ a.social{
     color:#fff;
     @include ease-in-fast;
   }
+}
+aside div.blog-tweet{
+  margin-left:0px !important;
+  margin-right:0px !important;
 }
 .blog-tweet{
   position: relative;
@@ -1160,15 +1189,16 @@ a.social{
 .klant-logo{
   height:100%;
   @include blur-fix;
-  @include ease-in-fast;
   img{
     display:block;
     margin:0 auto;
     @include vertical-align;
+    @include ease-in;
+    opacity: 0.9;
   }
-}
-.klant-logo:hover{
-  opacity:0.6;
+  img:hover{
+    opacity: 1;
+  }
 }
 .footer-con{
   background:$darkblue;
@@ -1181,6 +1211,22 @@ a.social{
   div{
     span{
       color:rgba(255, 255, 255,0.5);;
+    }
+  }
+}
+.errorpage-list{
+  margin-left:0;
+  margin-top:0;
+  li{
+    font-size:12px;
+    list-style-type: none;
+    color:#4A4A4A;
+    a{
+      color:#4A4A4A;
+      @include ease-in-fast;
+    }
+    a:hover{
+      color:#668e9d;
     }
   }
 }
@@ -1217,6 +1263,9 @@ a.social{
 .about-textbox{
   padding:60px;
 }
+.about-textbox-team{
+  padding:60px 0 0;
+}
 .about-text p{
   margin-top: 10px;
 }
@@ -1235,8 +1284,15 @@ a.social{
       min-height:100%;
     }
   }
+  img{
+    opacity: 0.8;
+  }
+}
+.header-bg{
+  background:rgba(0,0,0,0.25);
 }
 .pagetitle-con{
+  position: absolute;
 }
 .page-title{
   position:absolute;
@@ -1262,7 +1318,8 @@ a.social{
 }
 .nav-tabs{
   background: #F2F2F2;
-  margin-bottom:50px;
+  margin-bottom:30px;
+  margin-top:0px;
   border-bottom:0px;
   margin-left:0px;
   margin-right:0px;
@@ -1302,9 +1359,24 @@ a.social{
 .nav-tabs li.active a:hover{
   background:#fff;
 }
+.nav-detail{
+  margin-top:30px;
+}
 .person{
   border:1px solid #F2F2F2;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  @include ease-in;
+}
+.person:hover{
+  @include box-shadow-hov;
+  .person-img{
+    img{
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+      //-webkit-transform: scale(1.1);
+    }
+  }
 }
 .person-img{
   width:100%;
@@ -1315,19 +1387,16 @@ a.social{
     img{
       width: 100%;
       @include vertical-align;
-      filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
+      filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 3.5+ */
+      filter: grayscale(100%);
+      //filter: url(filters.svg#grayscale); /* Firefox 3.5+ */
       -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
        -webkit-transition: all .5s ease-in-out;
-       position: absolute;
+       -moz-transition: all .5s ease-in-out;
        height:auto;
        width:100%;
        left:50%;
        margin-left:-50%;
-    }
-    img:hover{
-      filter: none;
-      -webkit-filter: grayscale(0%);
-      //-webkit-transform: scale(1.1);
     }
 }
 .person-info{
@@ -1354,13 +1423,13 @@ a.social{
   }
 }
 .profile{
-  height:383px;
+  min-height:383px;
   margin-top:30px;
   margin-bottom:60px;
 }
 .profile-img{
   float:left;
-  height:383px;
+  height:460px;
   width:375px;
   overflow:hidden;
   img{
@@ -1398,6 +1467,7 @@ a.social{
 .related{
   margin:0 auto 40px;
   border:1px solid #EEEEEE;
+  @include ease-in-3;
   hr{
     margin:0;
     background-color:#F2F2F2;
@@ -1410,6 +1480,7 @@ a.social{
   }
 }
 .related:hover{
+  @include box-shadow-hov;
   .related-img{
     div.img{
       @include scale;
@@ -1425,9 +1496,11 @@ a.social{
   width:100%;
   position: relative;
   overflow:hidden;
+  background:#000;
   div.img{
     height:100%;
     width:100%;
+    opacity:0.8;
     @include cover;
     @include scale-out;
   }
@@ -1443,6 +1516,7 @@ a.social{
 .related-content{
   padding:30px;
   background:$white;
+  height:217px;
   p{
     margin-bottom:10px;
   }
@@ -1514,14 +1588,17 @@ a:hover.related-link-prog div.title-block
   height:460px;
   margin-bottom:70px;
 }
+.featured-blogpost:hover{
+  .img{
+    @include scale;
+  }
+}
 .featured-blogpost-img{
   height:inherit;
   width:50%;
   background:#ccc;
   overflow: hidden;
   float:left;
-  img{
-  }
 }
 .featured-blogpost-content{
   width:50%;
@@ -1617,16 +1694,27 @@ a:hover.related-link-prog div.title-block
   img{
     height:100%;
     width:100%;
+    object-fit: cover;
   }
 }
 .interview-info{
-
+  li{
+    list-style-type: none;
+  }
 }
 .selected{
   opacity: 0.5;
   pointer-events: none;
 }
-
+.size-large{
+  width:787px;
+  margin-left:-40px;
+  height:auto;
+}
+.wp-caption-text{
+  color:#ccc;
+  margin-bottom:30px;
+}
 span.wpcf7-form-control-wrap{
   input,textarea{
     background:#eeeeee;
@@ -1640,7 +1728,7 @@ span.wpcf7-form-control-wrap{
 }
 /*-----------MAP--------------*/
 #map-canvas{
-  height:388px;
+  height:402px;
   width:100%;
 }
 .route{
@@ -1873,6 +1961,9 @@ body,
     margin-left:5%;
     margin-right:5%;
   }
+  aside div.blog-tweet{
+    width:100%;
+  }
 }
 
 @media only screen and (min-width: 1101px) and (max-width: 1154px){
@@ -1890,6 +1981,9 @@ body,
     width:90%;
     margin-left:5%;
     margin-right:5%;
+  }
+  aside div.blog-tweet{
+    width:100%;
   }
 }
 
@@ -1935,6 +2029,9 @@ body,
   .featured-blogpost-content h1{
     width:350px;
     font-size:27px;
+  }
+  aside div.blog-tweet{
+    width:100%;
   }
 }
 
@@ -2023,6 +2120,9 @@ body,
   }
   .case{
     height:250px;
+  }
+  aside div.blog-tweet{
+    width:100%;
   }
 }
 
@@ -2145,6 +2245,7 @@ body,
   }
   .quote{
     height:auto;
+    padding-bottom:90px;
   }
   .programma-textbox{
     margin-bottom: 0px;
@@ -2209,6 +2310,9 @@ body,
   }
   .programma-textbox div.programma-content{
     bottom:-50px;
+  }
+  .programma-page{
+    min-height:290px !important;
   }
   .programma-textbox div.programma-content span.description{
     font-size:13px;
@@ -2275,10 +2379,16 @@ body,
     margin-top:20px;
   }
   .profile-img{
-    width:280px;
-    height:280px;
+    width:100%;
+    height:380px;
     margin:0 auto 30px;
     float:initial;
+    img{
+      top:60%;
+    }
+  }
+  .person-img img{
+    top:75%;
   }
   .information{
     padding:0px;
@@ -2305,6 +2415,15 @@ body,
   }
   .case-img h1{
     font-size:30px;
+  }
+  .size-large{
+    width:767px;
+  }
+  aside{
+    margin-top:30px;
+  }
+  .related-content{
+    height:255px;
   }
 }
 //BETWEEN 767px - 600px ----------------------------
@@ -2337,5 +2456,14 @@ body,
   .case{
     height:300px;
     padding:35px 20px;
+  }
+  .size-large{
+    width:321px;
+  }
+  .programma-page{
+    min-height:320px !important;
+  }
+  .related-content{
+    height:255px;
   }
 }

@@ -2,14 +2,8 @@
 
 {% block content %}
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row">
-			{% if page.thumbnail %}
-		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
-			{% else %}
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
-			{% endif %}
-		</div>
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src|resize(1440, 260)}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
 	<!--pagehead title and description-->
@@ -26,7 +20,7 @@
 
 	<!--Text-->
 	<div class="container white">
-  	<div class="row about-textbox">
+  	<div class="row about-textbox-team">
 			{% for col in page.get_field('content_columns') %}
 				{% if loop.length == 1 or loop.length == 2 %}
 					<div class="col-md-6 col-xs-12 about-text">
@@ -58,10 +52,10 @@
 					{% set tabname = term %}
 					<div role="tabpanel" class="tab-pane {% if loop.first %} active{% endif %}" id="{{term}}">
 						{% for person in category %}
-							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 								<div class="person {{person.terms|join(' ')|lower}} {{person.slug}}">
 									<div class="person-img">
-	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src('medium')}}"/></a>
+	                	<a href="{{person.permalink}}#{{tabname}}"><img src="{{person.thumbnail.src|resize(540,560)}}"/></a>
 	              	</div>
 									<div class="person-info">
 	                  <h3><a href="{{person.permalink}}#{{tabname}}">{{person.title}}</a></h3>
@@ -85,6 +79,7 @@
       <div class="col-lg-12">
         <span class="quote-font text-white">{{ quote.get_field('quote_text') }}</span>
       </div>
+			<span class="quote-author">{% if quote.get_field('quote-author') %}-{% endif %} {{ quote.get_field('quote-author') }}</span>
     </div>
   </div>
 	{% endif %}

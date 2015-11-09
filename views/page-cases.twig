@@ -3,14 +3,8 @@
 {% block content %}
 
 	<!--Header-->
-	<div class="container pagehead-con">
-		<div class="row">
-			{% if page.thumbnail %}
-		 	<img src="{{page.thumbnail.src('large')}}" alt="{{page.title}}">
-			{% else %}
-			<img src="{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg" alt="{{page.title}}" />
-			{% endif %}
-		</div>
+	<div class="container pagehead-con" style="background:url('{% if page.thumbnail %}{{page.thumbnail.src|resize(1440, 260)}}{% else %}{{ theme.link }}/img/pageheads/pagehead_{{ random(5) }}.jpg{% endif %}');background-size:cover;background-position:center center;">
+		<div class="row header-bg"></div>
 	</div>
 
 	<!--pagehead title and description-->
@@ -26,6 +20,7 @@
 	</div>
 
 	<!--Text-->
+	{% if page.get_field('content_columns') %}
 	<div class="container white">
   	<div class="row about-textbox">
 			{% for col in page.get_field('content_columns') %}
@@ -39,17 +34,18 @@
 			{% endfor %}
 		</div>
 	</div>
+	{% endif %}
 
 	<!--Cases-->
-	<div class="container cases-con">
-  	<div class="row cases-all">
-			<div class="col-lg-12"><span class="title">CASES</span></div>
+	<div class="container cases-con darkblue">
+  	<div class="row cases-all darkblue">
+			<div class="col-lg-12"><span class="title text-white">CASES</span></div>
 			{% for case in cases %}
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 about-text">
 					<div class="related">
 						<a href="{{case.permalink}}">
               <div class="related-img">
-                <div class="img" style="background-image:url('{{case.thumbnail.src('medium')}}')"></div>
+                <div class="img" style="background-image:url('{{case.thumbnail.src|resize(418,242)}}')"></div>
 								<span>{{case.post_title}}</span>
               </div>
             </a>
@@ -58,7 +54,11 @@
 								{% set rel_link = TimberPost(relation.ID) %}
 	              <span class="description"><a href="{{rel_link.permalink}}">{{relation.post_title}}</a></span>
 							{% endfor %}
-              <p>Schiphol Group is een world of opportunities. Er zijn zoveel verschillende disciplines, soorten afdelingen en werkzaamheden dat de interne mobiliteit heel interessant is. </p>
+							{% if case.post_excerpt %}
+								<p>{{ case.post_excerpt | truncate(33) }}</p>
+							{% else %}
+              	<p>{{case.get_preview(35,false,'',true)}}</p>
+							{% endif %}
 						</div>
 						<a href="{{case.permalink}}"><div class="title-block white"><span class="more-col">Lees meer</span></div></a>
 					</div>
